@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@200;300;400;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('variables.css');
+
+:root {
+    --verde-1: #6d9e67;
+    --verde-2: #456441;
+    --verde-3: #61f24e;
+    --preto-1: #0d1117;
+    --preto-2: #1f1f1f;
+
+    --bg-color-light: var(--gray-100);
+    --text-color-light: var(--preto-2);
+    --link-color-light: var(--verde-1);
+    --link-hover-color-light: var(--verde-2);
+
+    --bg-color-dark: var(--preto-2);
+    --text-color-dark: var(--gray-100);
+    --link-color-dark: var(--verde-1);
+    --link-hover-color-dark: var(--verde-2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    padding: 24px 126px 126px 126px;
+    overflow-x: hidden;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .nav--link.active::after {
+    background-color: var(--link-color-dark);
+}
+
+body.dark-mode .outline--link {
+    border-color: var(--link-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .outline--link:hover {
+    background: var(--link-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .solid--link {
+    background: var(--link-color-dark);
+    border-color: var(--link-color-dark);
+}
+
+body.dark-mode .solid--link:hover {
+    background: var(--link-hover-color-dark);
+    border-color: var(--link-hover-color-dark);
+}
+
+body.dark-mode .clear--link,
+body.dark-mode .nav--link {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .strong--link {
+    color: var(--link-color-dark);
+}
+
+body.dark-mode .nav--link.active {
+    color: var(--verde-1);
+    font-weight: var(--font-weight-bold);
+}
+
+body.dark-mode .logo,
+body.dark-mode .footer--logo {
+    color: var(--link-color-dark);
+    text-shadow: .1rem .1rem var(--link-hover-color-dark);
+}
+
+body.dark-mode header::after {
+    background-color: var(--gray-100); 
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 31.5px;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 870px;
+    width: 100vw; 
+    height: 1px; 
+    background-color: var(--preto-1); 
+    transform: translateX(-15px);
+}
+
+main, 
+section {
+    width: 100%;
+}
+
+.logo--nav {
+    display: flex;
+    flex-direction: row;
+    gap: 63px;
+    align-items: center;
+}
+
+.icon--links {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.nav--container {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    list-style: none;
+}
+
+.link--group {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+}
+
+.logo,
+.footer--logo {
+    font-family: 'BioRhyme Expanded';
+    color: var(--verde-2);
+    font-size: var(--h3-font-size);
+    text-shadow: .1rem .1rem var(--verde-3);
+}
+
+.footer--logo {
+    font-size: var(--h4-font-size);
+}
+
+a {
+    text-decoration: none;
+    color: var(--preto-1);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon i {
+    color: var(--verde-1);
+    font-size: 32px;
+}
+
+.icon > i:hover {
+    cursor: pointer;
+    color: var(--verde-2);
+}
+
+.clear--link:hover,
+.nav--link:hover {
+    color: var(--verde-1) !important;
+    font-weight: var(--font-weight-bold);
+}
+
+.nav--link {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav--link::after {
+    content: "";
+    position: absolute;
+    top: 46px;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: var(--verde-1);
+    transition: width 0.3s;
+    z-index: 10;
+}
+
+.nav--link:hover::after {
+    width: 100%;
+}
+
+.nav--link.active {
+    color: var(--verde-1);
+    font-weight: var(--font-weight-bold);
+}
+
+.nav--link.active::after {
+    width: 100%;
+    background-color: var(--verde-1);
+}
+
+.clear--link:hover,
+.nav--link:hover {
+    color: var(--verde-1) !important;
+    font-weight: var(--font-weight-bold);
+}
+
+
+.outline--link {
+    border: 2px solid var(--verde-1);
+    padding: 7px 12px 7px 12px;
+    border-radius: 8px;
+}
+
+.outline--link:hover {
+    background: var(--verde-1);
+    color: var(--white);
+
+}
+
+.solid--link {
+    font-weight: var(--font-weight-semibold);
+    color: var(--white);
+    background: var(--verde-1);
+    border: 2px solid var(--verde-1);
+    padding: 7px 12px 7px 12px;
+    border-radius: 8px;
+}
+
+.solid--link:hover {
+    background: var(--verde-2);
+    border: 2px solid var(--verde-2);
+}
+
+.strong--link,
+.bold {
+    font-weight: var(--font-weight-bold);
+    color: var(--verde-1);
+}
+
+.strong--link > i {
+    padding-left: 7px;
+}
+
+.strong--link:hover {
+    color: var(--verde-2) !important;
+}
+
+.left--icon svg {
+    width: 63px;
+}
+
+.external--img {
+    width: 521px;
+}
+
+footer .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 63px;
+    align-items: center;
+}
+
+.top .fa-instagram {
+    font-size: 35px;
+}
+
+footer .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 126px;
+}
+
+.content .column {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
