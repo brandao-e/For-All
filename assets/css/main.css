@@ -87,8 +87,21 @@ body.dark-mode .footer--logo {
     text-shadow: .1rem .1rem var(--link-hover-color-dark);
 }
 
-body.dark-mode header::after {
-    background-color: var(--gray-100); 
+body.dark-mode .acc-item {
+    border-bottom: 1px solid var(--gray-100);    
+}
+
+body.dark-mode .accordion,
+body.dark-mode footer .top a .fa-instagram {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .acc-item .accordion:after {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .panel {
+    color: var(--text-color-dark);
 }
 
 header {
@@ -96,17 +109,6 @@ header {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 31.5px;
-}
-
-header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 870px;
-    width: 100vw; 
-    height: 1px; 
-    background-color: var(--preto-1); 
-    transform: translateX(-15px);
 }
 
 main, 
@@ -260,10 +262,6 @@ a {
     color: var(--verde-2) !important;
 }
 
-.left--icon svg {
-    width: 63px;
-}
-
 .external--img {
     width: 521px;
 }
@@ -276,7 +274,7 @@ footer .top {
     align-items: center;
 }
 
-.top .fa-instagram {
+.top a .fa-instagram {
     font-size: 35px;
 }
 
@@ -290,4 +288,108 @@ footer .content {
     display: flex;
     flex-direction: column;
     gap: 3px;
+}
+
+.acc-container {
+    background: rgba(109, 158, 103, .25);
+    border-radius: 14px;
+    padding: 18px;
+    width: 530px;
+    height: 549px;
+}
+
+.acc-item {
+    border-bottom: 1px solid var(--preto-1);
+}
+
+.accordion {
+    background-color: transparent;
+    color: var(--text-color-light);
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 18px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: var(--text-color-light);
+    float: right;
+    margin-left: 5px;
+}
+
+.active-acc:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.active-acc, .accordion:hover {
+    background-color: rgb(69, 100, 65, .25);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 10px 20px 15px 20px;
+    background-color: rgb(69, 100, 65, .25);
+    color: var(--text-color-light);
+    display: none;
+    overflow: hidden;
+    text-align: justify;
+}
+
+form .input {
+    border: 1px solid var(--preto-1); 
+    border-radius: 7px;
+    padding: 11px;
+    background: transparent;
+    color: var(--preto-1);
+    font-size: var(--font-size-base);
+}
+
+body.dark-mode .content form .input {
+    border: 1px solid var(--gray-100); 
+    color: var(--gray-100);
+}
+
+/* Estilo do ícone de visibilidade da senha para tema escuro */
+body.dark-mode input[type="password"]::-ms-reveal, 
+body.dark-mode input[type="password"]::-ms-clear {
+    filter: invert(100%);
+}
+
+form input,
+form button {
+    width: 303px;
+    height: 44px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    color: var(--gray-600);
+}
+
+.separator::before,
+.separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--gray-600);
+}
+
+.separator:not(:empty)::before {
+    margin-right: .5em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .5em;
 }

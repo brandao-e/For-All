@@ -1,0 +1,122 @@
+@import url('variables.css');
+
+body {
+  overflow-y: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  border: 1px solid var(--preto-1);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  width: 383px;
+  height: 530px;
+  padding: 20px 40px 20px 40px;
+  display: flex;
+  align-items: center;
+}
+
+body.dark-mode .content {
+  border: 1px solid var(--gray-100);
+}
+
+.content h2 {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-weight-normal);
+  margin-bottom: 12px;
+}
+
+.content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content form p,
+.content form a {
+  font-size: var(--font-size-sm);
+}
+
+.content a.forget {
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid var(--preto-2);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.google-btn span {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.apple-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--preto-1);
+  border: 1px solid var(--gray-100);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--gray-100);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.apple-btn svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.apple-btn svg path {
+  fill: var(--gray-100);
+}
+
+.apple-btn span {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.bottom {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--gray-600);
+}
+
+span.user-not-found,
+span.wrong-email-password {
+  color: var(--red-500);
+  display: none;
+}
+
+/* span.user-not-found {
+  display: block;
+} */
+
+/* span.wrong-email-password {
+  display: block;
+} */

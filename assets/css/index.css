@@ -1,9 +1,9 @@
 @import url('variables.css');
 
-.first {
+.first,
+.four .content {
     display: flex;
     flex-direction: row;
-    gap: 126px;
     margin-bottom: 126px;
     align-items: center;
     justify-content: space-between;
@@ -15,6 +15,11 @@
 
 .first .left p {
     font-size: var(--h2-font-size);
+    margin-bottom: 32px;
+}
+
+.first .left p.small {
+    font-size: var(--font-size-base);
     margin-bottom: 32px;
 }
 
@@ -61,7 +66,6 @@ body.dark-mode .second .left--icon .svg path {
 
 .second .container--mkt .right--icon p {
     text-align: justify;
-    font-size: var(--font-size-lg);
 }
 
 .second .link--group {
@@ -71,14 +75,15 @@ body.dark-mode .second .left--icon .svg path {
 .third {
     display: flex;
     flex-direction: column;
-    gap: 126px;
+    gap: 0 !important;
     margin-bottom: 126px;
 }
 
 .third .top {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 10px;
+    margin-bottom: 63px;
 }
 
 .third .top h2 {
@@ -87,4 +92,53 @@ body.dark-mode .second .left--icon .svg path {
 
 .third .top p {
     font-size: var(--font-size-lg);
+}
+
+.third .categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .third .categories .content {
+    border: 1px solid var(--gray-100);
+}
+
+.third .categories .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--preto-1);
+    border-radius: 14px;
+    padding: 24px;
+    height: 220px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.third .categories .content:hover {
+    background: rgba(109, 158, 103, .25);
+    cursor: pointer;
+}
+
+.third .categories .content .icon path {
+    fill: var(--verde-1);
+}
+
+.four {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.four h2 {
+    margin-bottom: 63px;
+}
+
+.four .container {
+    display: flex;
+    flex-direction: row;
+    gap: 126px;
+    align-items: center;
+    margin-bottom: 126px;
 }
