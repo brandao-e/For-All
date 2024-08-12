@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For All | Cadastro</title>
+
+    <!--===== AWESOME ICONS =====-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--===== MAIN CSS =====-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!--===== LOGIN CSS =====-->
+    <link rel="stylesheet" href="../assets/css/rdb-cadastro.css">
+
+    <!--===== SCRIPT JS =====-->
+    <script src="../assets/js/script.js"></script>
+
+    <!--===== RDB-CAD JS =====-->
+    <script src="../assets/js/rdb-cad.js"></script>
+</head>
+<body>
+  <header>
+    <h1 class="logo">FOR ALL</h1>
+
+    <div class="icon">
+      <i class="fa-solid fa-moon"></i>
+    </div>
+  </header>
+
+  <main>
+    <h2>Entre como Empresa ou Funcionário</h2>
+
+    <div class="content">
+      <div class="rdb-groups">
+        <div class="custom-radio">
+          <div class="top-row">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16.5" height="22">
+              <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48V464c0 26.5 21.5 48 48 48h96V432c0-26.5 21.5-48 48-48s48 21.5 48 48v80h96c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H48zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm112-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM80 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V112zM272 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16z"/>
+            </svg> <!-- Ícone no lado esquerdo -->
+            <input type="radio" id="radio1" name="option" value="1"/>
+          </div>
+          <label for="radio1">Sou uma empresa, procurando por trabalhadores</label>
+        </div>
+        
+        <div class="custom-radio">
+          <div class="top-row">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" version="1.0" width="22" height="22" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+              <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+              <path d="M2268 5101 c-86 -34 -164 -119 -188 -205 -12 -44 -12 -44 -100 -75 -281 -101 -526 -339 -640 -624 -34 -84 -70 -226 -70 -274 0 -35 -4 -40 -72 -84 -152 -98 -180 -308 -60 -450 l25 -30 -20 -27 c-108 -147 -106 -348 7 -490 68 -86 164 -136 291 -150 l62 -7 23 -66 c51 -153 155 -318 273 -434 l61 -60 0 -132 0 -133 -187 0 c-213 0 -311 -13 -455 -59 -313 -101 -595 -391 -701 -721 -49 -152 -52 -189 -52 -617 l0 -403 28 -27 27 -28 2035 -3 2035 -2 32 29 33 29 0 404 c0 429 -3 466 -52 618 -106 330 -388 620 -701 721 -144 46 -242 59 -454 59 l-188 0 0 131 0 131 71 72 c115 115 232 308 273 450 l12 41 63 7 c127 14 223 64 291 150 112 142 115 343 7 489 l-19 27 36 48 c39 51 66 126 66 184 0 96 -57 200 -138 250 -67 42 -72 47 -72 83 0 48 -36 190 -70 274 -114 285 -359 523 -640 624 -88 31 -88 31 -100 75 -25 88 -103 172 -190 205 -44 17 -78 19 -293 19 -211 -1 -248 -3 -289 -19z m537 -203 c53 -41 55 -59 55 -413 l0 -325 28 -30 c17 -19 40 -33 63 -36 31 -5 42 -1 70 24 l34 30 3 246 3 245 66 -30 c180 -81 348 -240 435 -414 31 -61 73 -193 83 -257 l7 -48 -1092 0 -1092 0 7 48 c10 64 52 196 83 257 87 174 255 333 435 414 l67 30 0 -239 0 -240 28 -30 c17 -19 40 -33 63 -36 31 -5 42 -1 70 24 l34 30 5 344 c5 364 6 367 56 407 25 20 39 21 244 21 208 0 219 -1 245 -22z m1020 -1239 c14 -14 28 -42 32 -62 5 -32 1 -41 -30 -72 l-35 -35 -1236 2 -1236 3 -25 26 c-14 14 -28 42 -32 62 -5 32 -1 41 30 72 l35 35 1236 -2 1236 -3 25 -26z m-2365 -570 l0 -201 -37 7 c-112 20 -184 139 -154 252 19 70 102 138 174 142 16 1 17 -15 17 -200z m2000 17 c0 -118 -5 -214 -15 -269 -61 -353 -314 -641 -650 -743 -79 -24 -108 -27 -230 -28 -117 0 -153 3 -220 22 -324 92 -562 338 -656 677 -18 68 -22 113 -26 303 l-5 222 901 0 901 0 0 -184z m308 151 c18 -12 45 -40 60 -61 23 -33 27 -50 27 -106 0 -56 -4 -73 -27 -106 -34 -48 -81 -80 -130 -89 l-38 -7 0 202 0 202 38 -7 c20 -3 52 -16 70 -28z m-1628 -1307 c112 -56 254 -84 420 -84 166 0 308 28 420 84 82 41 80 43 80 -60 l0 -91 -247 -259 c-137 -143 -250 -260 -253 -260 -3 0 -116 117 -252 260 l-248 259 0 91 c0 103 -2 101 80 60z m48 -574 l272 -285 0 -445 0 -446 -399 0 -399 0 -4 136 -3 136 -34 30 c-28 25 -39 29 -70 24 -23 -3 -46 -17 -63 -36 -28 -30 -28 -33 -28 -160 l0 -130 -100 0 -100 0 0 704 0 703 58 16 c31 9 76 19 100 23 l42 7 0 -327 0 -326 28 -30 c17 -19 40 -33 63 -36 31 -5 42 -1 70 24 l34 30 3 336 3 336 128 0 128 0 271 -284z m1272 -46 l0 -330 28 -30 c17 -19 40 -33 63 -36 31 -5 42 -1 70 24 l34 30 3 332 3 332 42 -6 c23 -4 68 -14 100 -23 l57 -16 0 -703 0 -704 -99 0 -99 0 -4 136 -3 136 -34 30 c-28 25 -39 29 -70 24 -23 -3 -46 -17 -63 -36 -28 -30 -28 -33 -28 -160 l0 -130 -400 0 -400 0 0 446 0 445 272 285 271 284 129 0 128 0 0 -330z m-2400 -485 l0 -645 -200 0 -200 0 0 293 c0 379 15 477 98 645 53 106 102 174 194 265 49 48 93 87 98 87 6 0 10 -231 10 -645z m3108 558 c92 -91 141 -159 194 -265 83 -168 98 -266 98 -645 l0 -293 -200 0 -200 0 0 645 c0 414 4 645 10 645 5 0 49 -39 98 -87z"/>
+              <path d="M1524 820 c-32 -13 -64 -59 -64 -91 0 -40 46 -88 91 -95 31 -5 42 -1 70 24 28 25 34 37 34 72 0 35 -6 47 -33 71 -33 29 -60 35 -98 19z"/>
+              <path d="M3524 820 c-32 -13 -64 -59 -64 -91 0 -40 46 -88 91 -95 31 -5 42 -1 70 24 28 25 34 37 34 72 0 35 -6 47 -33 71 -33 29 -60 35 -98 19z"/>
+              </g>
+            </svg> <!-- Ícone no lado esquerdo -->
+            <input type="radio" id="radio2" name="option" value="2"/>
+          </div>
+          <label for="radio1">Sou um trabalhador, procurando por empresas</label>
+        </div>
+      </div>
+
+      <button class="solid--link btn" onclick="redirect()">CADASTRE-SE</button>
+      <p class="small">Já tem uma conta? <a href="login.html" class="strong--link">Entrar</a></p>
+    </div>
+  </main>
+</body>
+</html>
