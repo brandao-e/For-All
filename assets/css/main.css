@@ -226,6 +226,7 @@ a {
     border: 2px solid var(--verde-1);
     padding: 7px 12px 7px 12px;
     border-radius: 8px;
+    background: transparent;
 }
 
 .outline--link:hover {
@@ -342,7 +343,9 @@ footer .content {
     text-align: justify;
 }
 
-form .input {
+form .input,
+form select,
+form textarea {
     border: 1px solid var(--preto-1); 
     border-radius: 7px;
     padding: 11px;
@@ -351,7 +354,13 @@ form .input {
     font-size: var(--font-size-base);
 }
 
-body.dark-mode .content form .input {
+form select option {
+    color: var(--preto-1);
+}
+
+body.dark-mode form .input,
+body.dark-mode form select,
+body.dark-mode form textarea {
     border: 1px solid var(--gray-100); 
     color: var(--gray-100);
 }
@@ -392,4 +401,57 @@ form button {
 
 .separator:not(:empty)::after {
     margin-left: .5em;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid var(--preto-2);
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+  
+.google-btn span {
+    flex-grow: 1;
+    text-align: center;
+}
+  
+.apple-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--preto-1);
+    border: 1px solid var(--gray-100);
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--gray-100);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+.apple-btn svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+  
+.apple-btn svg path {
+    fill: var(--gray-100);
+}
+  
+.apple-btn span {
+    flex-grow: 1;
+    text-align: center;
 }

@@ -1,0 +1,50 @@
+@import url('variables.css');
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main h2 {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-weight-light);
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.row button {
+    width: 303px;
+    height: 44px;
+}
+
+.row .email {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-row input {
+    width: 100%;
+}
+
+span.pass-error,
+span.email-error {
+  color: var(--red-500);
+  display: none;
+}
+
+/* span.pass-error {
+    display: block;
+} */

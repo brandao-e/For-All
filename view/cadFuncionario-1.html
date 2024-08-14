@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For All | Login</title>
+    <title>For All | Cadastro</title>
 
     <!--===== AWESOME ICONS =====-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -11,8 +11,8 @@
     <!--===== MAIN CSS =====-->
     <link rel="stylesheet" href="../assets/css/main.css">
 
-    <!--===== LOGIN CSS =====-->
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <!--===== FORMCADASTRO CSS =====-->
+    <link rel="stylesheet" href="../assets/css/formCadastro.css">
 
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
@@ -27,21 +27,10 @@
   </header>
 
   <main>
+    <h2>Entre para contratar</h2>
+
     <div class="content">
-      <h2>Login</h2>
-      <span class="user-not-found">Usuário não encontrado!</span>
-      <span class="wrong-email-password">Email ou senha incorretos!</span>
-      <form action="" method="post">
-        <input class="input" type="email" name="email--input" id="email--input-ID" placeholder="Email" required>
-        <input class="input" type="password" name="password--input" id="password--input-ID" placeholder="Senha" required>
-
-        <a href="#" class="clear--link forget">Esqueceu sua senha?</a>
-        <input class="solid--link" type="submit" value="LOGIN">
-
-        <div class="separator">
-          <span>ou</span>
-        </div>
-
+      <div class="row">
         <button class="google-btn">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg" alt="Google Icon">
           <span>Continuar com o Google</span>
@@ -54,9 +43,39 @@
           </svg>
           <span>Continuar com a Apple</span>
         </button>    
+      </div>
 
-        <div class="bottom">
-          <p>Ainda não criou uma conta? <a href="rdb-cadastro.html" class="clear--link">Cadastre-se</a></p>
+      <div class="row">
+        <div class="separator">
+          <span>ou</span>
+        </div>
+      </div>
+
+      <form action="" method="post">
+        <div class="row">
+          <input class="input" type="text" name="pNome--input" id="pNome--input-ID" placeholder="Primeiro Nome" required>
+          <input class="input" type="text" name="uNome--input" id="uNome--input-ID" placeholder="Último Nome" required>
+        </div>
+
+        <div class="row">
+          <div class="email">
+              <input class="input" type="email" name="email--input" id="email--input-ID" placeholder="Email Profissional" required>
+              <!--Exibir via js caso o email já esteja no banco de dados-->
+              <span class="email-error">O email já está em uso!</span>
+          </div>
+          <input class="input" type="text" name="xp--input" id="xp--input-ID" placeholder="Experiência profissional" required>
+        </div>
+
+        <div class="full-row">
+          <input class="input" type="password" name="password--input" id="password--input-ID" placeholder="Senha" required>
+          <!--Exbir com js caso a senha seja menor que 9 caracteres-->
+          <span class="pass-error">A senha precisa de pelo menos 9 caracteres.</span>
+        </div>
+
+        <div class="full-row">
+          <!--Levar para a página cadEmpresa-2.html-->
+          <input class="outline--link" type="submit" value="CRIAR CONTA">
+          <p>Já tem uma conta? <a href="login.html" class="strong--link">Entrar</a></p>
         </div>
       </form>
     </div>
