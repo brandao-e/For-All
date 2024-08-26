@@ -48,6 +48,59 @@ body.dark-mode .content {
   margin-bottom: 10px;
 }
 
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid var(--preto-2);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.google-btn span {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.apple-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--preto-1);
+  border: 1px solid var(--gray-100);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--gray-100);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.apple-btn svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.apple-btn svg path {
+  fill: var(--gray-100);
+}
+
+.apple-btn span {
+  flex-grow: 1;
+  text-align: center;
+}
+
 .bottom {
   margin-top: 10px;
   padding-top: 12px;
