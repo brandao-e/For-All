@@ -1,0 +1,5 @@
+@import url('variables.css');
+
+.full-row input {
+    width: 100%;
+}

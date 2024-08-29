@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For All | Cadastro</title>
+
+    <!--===== AWESOME ICONS =====-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--===== MAIN CSS =====-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!--===== FORMCADASTROFUNC CSS =====-->
+    <link rel="stylesheet" href="../assets/css/formCadastroFunc.css">
+
+    <!--===== SCRIPT JS =====-->
+    <script src="../assets/js/script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="../index.html"><h1 class="logo">FOR ALL</h1></a>
+
+    <div class="icon">
+      <i class="fa-solid fa-moon"></i>
+    </div>
+  </header>
+
+  <main>
+    <form action="" method="post" class="container">
+        <div class="left">
+            <h2>Quais são os principais serviços que você oferece?</h2>
+            <p>
+                Escolha pelo menos um serviço que melhor descreva o tipo de trabalho que você faz. Isso nos ajuda a conectá-lo com clientes que precisam da sua experiência única.
+            </p>
+        </div>
+        <div class="full-row">
+            <select name="slcPesquisarServico" id="slcPesquisarServico-ID">
+                <option selected>Pesquisar um serviço</option>
+                <option value="1">Jovem Aprendiz</option>
+                <option value="2">Contrato CLT</option>
+                <option value="3">Terceirizado (CLT)</option>
+            </select>
+        </div>
+        <div class="">
+            <p>
+                Selecione uma subcategoria dos seus serviços.
+            </p>
+        </div>
+        <div class="full-row">
+            <select name="slcPesquisarSubCategoria" id="slcPesquisarSubCategoria-ID">
+                <option selected>Pesquisar uma subcategoria</option>
+                <option value="1">Jovem Aprendiz</option>
+                <option value="2">Contrato CLT</option>
+                <option value="3">Terceirizado (CLT)</option>
+            </select>
+        </div>
+        <div class="btn">
+            <!--Redirecionar para a página de adicionar detalhes ao perfil (cadFuncionario-4.html)-->
+            <input class="solid--link" type="submit" value="ADICIONE FOTO E LOCALIZAÇÃO">
+        </div>
+    </form>
+  </main>    
+</body>
+</html>
