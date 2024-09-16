@@ -3,3 +3,33 @@
 .full-row input {
     width: 100%;
 }
+
+@media (max-width: 568px) {
+    .container {
+        display: block !important;
+    }
+
+    .container .left h2 {
+        font-size: var(--font-size-lg) !important;
+    }
+
+    .container .left p {
+        text-align: justify;
+        font-size: var(--font-size-sm) !important;
+        margin-bottom: 52px;
+    }
+
+    .container .full-row {
+        width: 100% !important;
+        margin-bottom: 24px;
+    }
+    
+    .container .full-row select {
+        width: 100% !important;
+    }
+
+    .container .full-row p {
+        text-align: justify;
+        font-size: var(--font-size-sm) !important;
+    }
+}

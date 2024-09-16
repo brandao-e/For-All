@@ -112,3 +112,37 @@ body.dark-mode .right .content .row .row-item svg path {
     bottom: 28px;
     right: 126px;
 }
+
+@media (max-width: 568px) {
+    .container {
+        display: block !important;
+    }
+
+    .container .right {
+        display: none;
+    }
+
+    .container .left {
+        width: 100%;
+    }
+
+    .container .left h2 {
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-h4);
+    }
+
+    .container .left p {
+        text-align: justify;
+        font-size: var(--font-size-sm);
+    }
+
+    .container .left textarea {
+        font-size: var(--font-size-sm);
+    }
+
+    .btn input {
+        position: absolute;
+        bottom: -28px;
+        right: 63px;
+    }
+}

@@ -144,3 +144,26 @@ body.dark-mode .third .categories .content {
     align-items: center;
     margin-bottom: 126px;
 }
+
+/* Estilos para celulares em modo retrato (portrait) */
+@media (max-width: 568px) {
+    .first .right {
+        display: none;
+    }
+
+    .first .left {
+        width: 100%;
+    }
+
+    .first .left p {
+        font-size: var(--font-size-lg);
+    }
+
+    .four .container .right {
+        display: none;
+    }
+
+    .four .container .left {
+        width: 100%;
+    }
+}

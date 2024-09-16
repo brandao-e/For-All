@@ -2,17 +2,13 @@
 
 @import url('variables.css');
 
-body {
-  overflow-y: hidden;
-}
-
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.content {
+main .content {
   border: 1px solid var(--preto-1);
   border-radius: 14px;
   display: flex;
@@ -24,28 +20,28 @@ main {
   align-items: center;
 }
 
-body.dark-mode .content {
+body.dark-mode main .content {
   border: 1px solid var(--gray-100);
 }
 
-.content h2 {
+main .content h2 {
   font-size: var(--h2-font-size);
   font-weight: var(--font-weight-normal);
   margin-bottom: 12px;
 }
 
-.content form {
+main .content form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.content form p,
-.content form a {
+main .content form p,
+main .content form a {
   font-size: var(--font-size-sm);
 }
 
-.content a.forget {
+main .content a.forget {
   margin-left: auto;
   margin-bottom: 10px;
 }

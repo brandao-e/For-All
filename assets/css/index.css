@@ -144,3 +144,81 @@ body.dark-mode .third .categories .content {
     align-items: center;
     margin-bottom: 126px;
 }
+
+/* Estilos para celulares em modo retrato (portrait) */
+@media (max-width: 568px) {
+    .first .right {
+        display: none;
+    }
+
+    .first .left {
+        width: 100%;
+    }
+
+    .first .left p {
+        font-size: var(--font-size-lg);
+    }
+
+    .second {
+        width: 100%;
+    }
+
+    .second .left {
+        display: none;
+    }
+
+    .second .right h2 {
+        font-size: var(--h4-font-size);
+    }
+
+    .second .right .left--icon .svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .second .container--mkt .right--icon h3 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .second .container--mkt .right--icon p {
+        font-size: var(--font-size-sm);
+    }
+
+    .third {
+        width: 100%;
+        margin-bottom: 63px;
+    }
+
+    .third .top {
+        margin-bottom: 40px;
+    }
+
+    .third .top h2 {
+        font-size: var(--h4-font-size);
+    }
+
+    .third .top p,
+    .third .top a {
+        font-size: var(--font-size-sm);
+    }
+
+    .third .categories {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .third .categories .content {
+        height: 58px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 14px;
+    }
+
+    .four .container .right {
+        display: none;
+    }
+
+    .four .container .left {
+        width: 100%;
+    }
+}

@@ -85,3 +85,22 @@ body.dark-mode .icon path {
   margin-bottom: 8px;
   margin-top: 8px;
 }
+
+@media (max-width: 568px) {
+  main h2 {
+    font-size: var(--h5-font-size);
+  }
+
+  .content .rdb-groups {
+    flex-direction: column;
+  }
+
+  .custom-radio {
+    width: 100%;
+    height: 213px;
+  }
+
+  .custom-radio label {
+    font-size: var(--font-size-base);
+  }
+}

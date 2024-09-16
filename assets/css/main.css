@@ -31,6 +31,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     width: 100%;
     padding: 24px 126px 126px 126px;
@@ -106,11 +110,40 @@ body.dark-mode .panel {
     color: var(--text-color-dark);
 }
 
-header {
+body.dark-mode .mobile .dropdown,
+body.dark-mode .mobile .dropdown.active {
+    background: var(--bg-color-dark);
+    color: var(--gray-100) !important;
+}
+
+body.dark-mode .mobile .dropdown .top .icon-xmark {
+    color: var(--gray-100) !important;
+}
+
+.header--container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 31.5px;
+}
+
+.mobile {
+    display: none;
+    margin-bottom: 31.5px;
+}
+
+.mobile .logo--icon {
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mobile .logo--icon .dropdown {
+    display: none !important;
+}
+
+.mobile .dropdown .top .icon-xmark {
+    color: var(--black) !important;
 }
 
 main, 
@@ -170,8 +203,12 @@ a {
 }
 
 .icon i {
-    color: var(--verde-1);
     font-size: 32px;
+}
+
+.icon i.fa-moon,
+.icon i.fa-sun {
+    color: var(--verde-1);
 }
 
 .icon > i:hover {
@@ -456,4 +493,109 @@ form button {
 .apple-btn span {
     flex-grow: 1;
     text-align: center;
+}
+
+/* Estilos para celulares em modo retrato (portrait) */
+@media (max-width: 568px) {
+    body {
+        padding: 24px 63px 63px 63px;
+    }
+
+    .header--container {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .mobile .logo--icon {
+        display: flex;
+    }
+
+    .link--group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .link--group a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .acc-container {
+        max-width: 357px;
+        /* height: 754px; */
+    }
+
+    .accordion {
+        font-size: var(--font-size-sm);
+    }
+
+    .panel {
+        font-size: 12px;
+    }
+
+    .mobile .logo--icon .dropdown.active {
+        display: block !important;
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        height: 240px;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--bg-color-light);
+        color: var(--bg-color-dark) !important;
+        display: flex;
+        flex-direction: column;
+        padding: 32px 40px 32px 40px;
+        box-shadow: 10px 8px 20px 6px rgba(0, 0, 0, 0.5);
+        transform: transition 2s;
+    }
+    
+    .mobile .dropdown .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
+    
+    .mobile .dropdown .top .icon-xmark {
+        color: var(--black) !important;
+    }
+
+    .mobile .dropdown .content .mid {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
+
+    .content nav,
+    .content nav .nav--container {
+        width: 100%;
+    }
+
+    .mobile .dropdown .content .link--group {
+        flex-direction: row;
+    }
+
+    .mobile .dropdown .content .link--group a {
+        width: 160px;
+        font-size: var(--font-size-sm);
+    }
+
+    .mobile .dropdown .content .nav--container li a {
+        font-size: var(--font-size-base);
+    }
+
+    footer .content {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 63px;
+        justify-content: center;
+    }
 }

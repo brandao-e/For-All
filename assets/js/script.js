@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const themeToggleIcon = document.querySelector('.icon i');
+    const themeToggleIcon = document.querySelector('.theme-icon i');
     const body = document.body;
+    const mobileMenuToggle = document.querySelector('.icon-bars i');
+    const dropdown = document.querySelector('.dropdown');
+    const iconXmark = document.querySelector('.icon-xmark i');
+    const mobileThemeToggleIcon = document.querySelector('.mobile .content .mid .theme-icon i');
 
     // Verifica o tema salvo no localStorage e aplica
     const savedTheme = localStorage.getItem('theme');
@@ -12,19 +16,26 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    themeToggleIcon.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        
-        if (body.classList.contains('dark-mode')) {
-            themeToggleIcon.classList.remove('fa-moon');
-            themeToggleIcon.classList.add('fa-sun');
-            localStorage.setItem('theme', 'dark-mode'); // Salva o tema no localStorage
-        } else {
-            themeToggleIcon.classList.remove('fa-sun');
-            themeToggleIcon.classList.add('fa-moon');
-            localStorage.removeItem('theme'); // Remove o tema do localStorage (default será claro)
-        }
-    });
+    // Funcção alternar tema
+    function alternarTema(icone) {
+        icone.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icone.classList.remove('fa-moon');
+                icone.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark-mode'); // Salva o tema no localStorage
+            } else {
+                icone.classList.remove('fa-sun');
+                icone.classList.add('fa-moon');
+                localStorage.removeItem('theme'); // Remove o tema do localStorage (default será claro)
+            }
+        });
+    }
+
+    alternarTema(themeToggleIcon);
+
+    alternarTema(mobileThemeToggleIcon);
 
     var acc = document.getElementsByClassName("accordion");
     var i;
@@ -50,4 +61,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+    
+    mobileMenuToggle.addEventListener('click', function() {
+        dropdown.classList.toggle('active');
+    })
+
+    iconXmark.addEventListener('click', function() {
+        dropdown.classList.remove('active');
+    })
 });

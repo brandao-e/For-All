@@ -14,41 +14,107 @@
     <!--===== FORMCADASTROFUNC CSS =====-->
     <link rel="stylesheet" href="../assets/css/formCadastroFunc.css">
 
+    <!--===== FORMCADFUNCFINAL CSS =====-->
+    <link rel="stylesheet" href="../assets/css/formCadFuncFinal.css">
+
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
 </head>
 <body>
-  <header>
-    <a href="../index.html"><h1 class="logo">FOR ALL</h1></a>
-
-    <div class="icon">
-      <i class="fa-solid fa-moon"></i>
-    </div>
-  </header>
+    <header>
+        <div class="header--container">
+          <div class="logo--nav">
+            <a href="../index.html">
+              <h1 class="logo">FOR ALL</h1>
+            </a>
+          </div>
+          
+          <div class="theme-icon icon">
+            <i class="fa-solid fa-moon"></i>
+          </div>
+        </div>
+    
+        <div class="mobile">
+          <div class="logo--icon">
+            <a href="../index.html">
+              <h1 class="logo">FOR ALL</h1>
+            </a>
+    
+            <div class="icon icon-bars">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+    
+            <div class="dropdown">
+              <div class="top">
+                <a href="../index.html">
+                  <h1 class="logo">FOR ALL</h1>
+                </a>
+    
+                <div class="icon icon-xmark">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="content">
+                <div class="mid">
+                  <div class="link--group">
+                    <a href="login.html" class="solid--link">LOGIN</a>
+                    <a href="rdb-cadastro.html" class="outline--link">CADASTRE-SE</a>
+                  </div>
+                  <div class="theme-icon icon">
+                    <i class="fa-solid fa-moon"></i>
+                  </div>
+                </div>
+    
+                <nav>
+                  <ul class="nav--container">
+                    <li><a href="../index.html" class="strong--link active">QUERO CONTRATAR</a></li>
+                    <li><a href="index-funcionario.html" class="strong--link">QUERO TRABALHAR</a></li>
+                  </ul>
+                </nav>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
 
   <main>
-    <form action="" method="post" class="container">
-        <div class="left">
-            <h2>Pré-visualização do Perfil</h2>
+    <div class="container">
+        <div class="top">
+            <p>Está ótimo, NOME CADASTRADO COM PHP AQUI!</p>
+            <p>Confira as informações, se precisar volte e faça quaisquer edições que desejar e, em seguida, envie seu perfil. Você pode fazer mais alterações, limitadas, depois que ele estiver publicado.</p>
+            <!-- este link levará para a primeira página de cadastro, onde os inputs já estarão preenchidos com as informações antes colocadas lá -->
+            <a href="cadFuncionario-1.html" class="solid--link">Editar perfil</a>
         </div>
-        <div class="right">
-            <div class="content">
-                <div class="top">
-                    <div class="img">
-                        <img src="../assets/img/tl (1).png" alt="Imagem meramente ilustrativa">
-                    </div>
-                </div>
-                <div class="icon--links">
-                    <div class="link--group">
-                        <a href="rdb-cadastro.html" class="outline--link">CARREGAR FOTO</a>
-                    </div>
+
+        <div class="bottom">
+            <div class="container">
+                <div class="img">
+                  <!-- imagem cadastrada com php -->
+                    <img src="../assets/img/imagemGenerica.png" alt="Imagem meramente ilustrativa">
                 </div>
 
-        <div class="btn">
-            <!--Redirecionar para a página de perfil (perfilFuncionario.html)-->
-            <input class="solid--link" type="submit" value="ENVIAR PERFIL">
+                <div>
+                    <h2>NOME CADASTRADO COM PHP AQUI</h2>
+                    <p>EMAIL CADASTRADO COM PHP AQUI</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <h3>CATEGORIA SELECIONADA COM PHP AQUI</h3>
+                <!-- biografia -->
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis sapiente deserunt aspernatur fugiat maiores qui doloremque distinctio esse. Similique fuga tempore itaque aut? Fugit repellendus ex atque minima magni ipsam.</p>
+
+                <h4>Subcategoria do serviço</h4>
+                <!-- subcategoria selecionada -->
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            </div>
         </div>
-    </form>
+    </div>
+
+    <div class="bottom-content">
+      <!-- Quando este link for clicado deverá confirmar o cadastro do funcionario na plataforma -->
+      <a href="#" class="solid--link">Enviar Perfil</a>
+    </div>
   </main>    
 </body>
 </html>

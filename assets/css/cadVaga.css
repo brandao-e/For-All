@@ -2,10 +2,6 @@
 
 @import url('variables.css');
 
-body {
-    overflow-y: hidden;
-}
-
 main h2 {    
     font-size: var(--h2-font-size);
     font-weight: var(--font-weight-normal);
@@ -24,7 +20,7 @@ main .categories {
     margin-bottom: 40px;
 }
 
-.content {
+.categories .content {
     display: flex;
     flex-direction: row;
     gap: 15px;
@@ -35,15 +31,15 @@ main .categories {
     cursor: pointer;
 }
 
-body.dark-mode .content {
+body.dark-mode .categories .content {
     border: 1px solid var(--gray-100);
 }
 
-.content.selected {
+.categories .content.selected {
     border: 1px solid var(--verde-1) !important;
 }
 
-.content .svg path {
+.categories .content .svg path {
     fill: var(--verde-1);
 }
 
@@ -83,6 +79,54 @@ body.dark-mode .content {
 
 .btn input {
     position: absolute;
-    bottom: 28px;
+    bottom: -28px;
     right: 126px;
+}
+
+@media (max-width: 568px) {
+    main h2 {    
+        font-size: var(--h4-font-size);
+    }
+    
+    main h3 {
+        font-size: var(--h4-font-size);
+    }
+
+    main .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    input,
+    select {
+        width: 100% !important;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .content .content svg {
+        width: 25px;
+    }
+
+    .content .content span {
+        font-size: var(--font-size-sm);
+    }
+
+    .btn {
+        margin-left: 128px;
+    }
+
+    .btn input {
+        position: static;
+    }
 }

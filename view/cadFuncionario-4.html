@@ -11,58 +11,97 @@
     <!--===== MAIN CSS =====-->
     <link rel="stylesheet" href="../assets/css/main.css">
 
-    <!--===== FORMCADASTROFUNC CSS =====-->
-    <link rel="stylesheet" href="../assets/css/formCadastroFunc.css">
+    <!--===== formCadFunc-4 CSS =====-->
+    <link rel="stylesheet" href="../assets/css/formCadFunc-4.css">
 
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
 </head>
 <body>
   <header>
-    <a href="../index.html"><h1 class="logo">FOR ALL</h1></a>
-
-    <div class="icon">
-      <i class="fa-solid fa-moon"></i>
-    </div>
+      <div class="header--container">
+        <div class="logo--nav">
+          <a href="../index.html">
+            <h1 class="logo">FOR ALL</h1>
+          </a>
+        </div>
+        
+        <div class="theme-icon icon">
+          <i class="fa-solid fa-moon"></i>
+        </div>
+      </div>
+  
+      <div class="mobile">
+        <div class="logo--icon">
+          <a href="../index.html">
+            <h1 class="logo">FOR ALL</h1>
+          </a>
+  
+          <div class="icon icon-bars">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+  
+          <div class="dropdown">
+            <div class="top">
+              <a href="../index.html">
+                <h1 class="logo">FOR ALL</h1>
+              </a>
+  
+              <div class="icon icon-xmark">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+            </div>
+            <div class="content">
+              <div class="mid">
+                <div class="link--group">
+                  <a href="login.html" class="solid--link">LOGIN</a>
+                  <a href="rdb-cadastro.html" class="outline--link">CADASTRE-SE</a>
+                </div>
+                <div class="theme-icon icon">
+                  <i class="fa-solid fa-moon"></i>
+                </div>
+              </div>
+  
+              <nav>
+                <ul class="nav--container">
+                  <li><a href="../index.html" class="strong--link active">QUERO CONTRATAR</a></li>
+                  <li><a href="index-funcionario.html" class="strong--link">QUERO TRABALHAR</a></li>
+                </ul>
+              </nav>
+              </div>
+          </div>
+          </div>
+      </div>
   </header>
 
   <main>
-    <form action="" method="post" class="container">
+    <h2>Alguns últimos detalhes, depois você pode verificar e publicar seu perfil.</h2>
+
+    <p>Uma foto profissional ajuda a construir confiança com as empresas.</p>
+
+    <form action="" method="post">
+      <div class="container">
         <div class="left">
-            <h2>Alguns últimos detalhes, depois você pode verificar e publicar seu perfil.</h2>
-            <p>
-                Uma foto profissional ajuda a construir confiança com as empresas.
-            </p>
-           
+          <div class="img-container">
+            <img src="../assets/img/imagemGenerica.png" alt="Imagem Ilustrativa">
+          </div>
+          <div class="foto-group">
+            <label for="selecao-arquivo" class="outline--link">CARREGAR FOTO</label>
+            <input id="selecao-arquivo" type="file">
+          </div>
         </div>
         <div class="right">
-            <div class="content">
-                <div class="top">
-                    <div class="img">
-                        <img src="../assets/img/tl (1).png" alt="Imagem meramente ilustrativa">
-                    </div>
-                </div>
-                <div class="icon--links">
-                    <div class="link--group">
-                        <a href="rdb-cadastro.html" class="outline--link">CARREGAR FOTO</a>
-                    </div>
-                </div>
-
-                <!--<div class="bottom">
-                   
-                </div> -->
-            </div>
+          <div class="input-group">
+            <label for="data-nasc">Data de nascimento</label>
+            <input class="input" type="date" name="data-nasc" id="data-nasc">
+          </div>
+          <div class="input-group">
+            <label for="phone-num">Número de celular</label>
+            <input class="input" type="text" name="phone-num" id="phone-num" placeholder="(XX) X XXXX-XXXX">
+          </div>
         </div>
-        <form action="" method="post">
-            <div class="row">
-              <input class="input" type="date" name="Data--input" id="Data--input-ID" placeholder="DD/MM/AAAA" required>
-              <input class="input" type="tel" name="Numero--input" id="Numero--input-ID" placeholder="+55 XX XXXXX-XXXX" required>
-            </div>
-
-        <div class="btn">
-            <!--Redirecionar para a página de pré visualização do perfil (cadFuncionario-5.html)-->
-            <input class="solid--link" type="submit" value="REVISAR O SEU PERFIL">
-        </div>
+      </div>
+      <input type="submit" value="REVISAR SEU PERFIL" class="solid--link">
     </form>
   </main>    
 </body>

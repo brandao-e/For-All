@@ -50,3 +50,17 @@ span.email-error {
 /* span.pass-error {
     display: block;
 } */
+
+@media (max-width: 568px) {
+    body {
+        padding:  24px 63px 63px 63px !important;
+    }
+
+    main h2 {
+        font-size: var(--h3-font-size);
+    }
+
+    .row {
+        flex-direction: column;
+    }
+  }
