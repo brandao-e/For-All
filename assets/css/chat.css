@@ -1,0 +1,208 @@
+@import url('variables.css');
+
+.header--container .icon {
+    display: flex;
+    gap: 24px;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-column {
+    width: 30%;
+    background-color: transparent;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    gap: 15px;
+    margin-right: 30px;
+}
+
+body.dark-mode .left-column {
+    border: 2px solid white;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.search-bar input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-bar .fa-magnifying-glass {
+    margin-left: 10px;
+    color: black;
+}
+
+.settings {
+    margin-left: 10px;
+    cursor: pointer;
+    color: black;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+.contact.selected {
+    background-color: #6d9e67;
+    color: white;
+}
+
+.contact .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.contact-info {
+    flex: 1;
+    color: black;
+}
+
+.contact-info strong {
+    font-size: 16px;
+}
+
+.contact-info .time {
+    color: black;
+    font-size: 12px;
+    float: right;
+    margin-top: 2px;
+}
+
+.contact-info p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.contact .fa-ellipsis {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: black;
+}
+
+.right-column {
+    width: 70%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+body.dark-mode .right-column {
+    border: 2px solid white;
+}
+
+.chat {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.message.received {
+    justify-content: flex-start;
+}
+
+.message.sent {
+    justify-content: flex-end;
+}
+
+.message .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.message-info {
+    max-width: 70%;
+    color: black;
+}
+
+.message-info strong {
+    font-size: 14px;
+}
+
+body.dark-mode .message-info strong {
+    color: white;
+}
+
+.message-info p {
+    font-size: 16px;
+    margin-top: 5px;
+    background-color: #d7d7d7;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.message-input {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ccc;
+}
+
+.message-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.message-input .fa-paperclip {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.send-btn {
+    background-color: #6d9e67;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.send-btn .fa-paper-plane {
+    font-size: 18px;
+}
+
+.status-indicator {
+    float: right;
+    width: 12px;
+    height: 12px;
+    background-color: #28a745;
+    border-radius: 50%;
+}

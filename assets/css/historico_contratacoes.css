@@ -1,0 +1,114 @@
+@import url('variables.css');
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.left {
+    border: 2px solid #6d9e67;
+    padding: 10px;
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 40%;
+}
+
+.right {
+    width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 30px; 
+    gap: 15px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    margin-right: 10px;
+}
+
+.categories label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.vacancy {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    border: 1px solid;
+}
+
+.vacancy h3 {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.salario {
+    margin: 0;
+}
+
+.vaga-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.categoria {
+    background-color: #e0e0e0;
+    padding: 3px;
+    border-radius: 10px;
+    display: inline-block;
+    color: black;
+}
+
+.rating {
+    margin-top: 10px;
+    text-align: lef;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: transparent; 
+    font-weight: bold;
+    color: #6d9e67;
+    border: 3px solid #6d9e67;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.pagination button:hover {
+    background-color: #6d9e67; 
+    color: white;
+}
+
+.pagination button.active {
+    background-color: #6d9e67;
+    color: white;
+    border: 1px solid #6d9e67;
+}

@@ -1,0 +1,156 @@
+@import url('variables.css');
+
+.container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.empresa-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; 
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    background-color: #b5e5b5;
+    color: black;
+    height: 160px;
+}
+
+.empresa-foto {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.empresa-detalhes {
+    margin-left: 10px;
+}
+
+.rating {
+    margin-top: 15px;
+    position: absolute;
+    top: 90px;
+    left: 15px;
+    display: flex; 
+    gap: 2px; 
+}
+
+.encontrar-trabalhadores {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #6d9e67;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.encontrar-trabalhadores:hover {
+    background-color: #456441;
+}
+
+.apresentacoes {
+    border: 1px solid; 
+    padding: 15px;
+    border-radius: 10px;
+    border-color: var(--borda-cor);
+}
+
+.apresentacoes textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: none;
+    background-color: #ccc8c8;
+    border-radius: 10px;
+    font-style: italic;
+    color: hsl(0, 3%, 71%);
+}
+
+.historico {
+    border: 1px solid; 
+    padding: 15px;
+    border-radius: 10px;
+    border-color: var(--borda-cor);
+}
+
+.right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.vaga-footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-direction: column; 
+    align-items: flex-end;
+}
+
+.salary {
+    margin-left: auto; 
+    text-align: right;
+}
+
+.vaga {
+    border: 1px solid; 
+    padding: 15px;
+    border-radius: 10px;
+    border-color: var(--borda-cor);
+}
+
+.analisar-trabalhadores {
+    background-color: transparent;
+    color: black;
+    border: 2px solid #6d9e67;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+body.dark-mode .analisar-trabalhadores {
+    color: white;
+}
+
+.analisar-trabalhadores:hover {
+    background-color: #6d9e67;
+    color: white;
+}
+
+h3 {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+h3 i {
+    margin-left: auto; 
+}
+
+.vaga:last-of-type .analisar-trabalhadores {
+    background-color: transparent;
+    border: 2px solid rgb(171, 4, 4);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.vaga:last-of-type .analisar-trabalhadores:hover {
+    background-color: rgb(171, 4, 4);
+    color: white;
+}

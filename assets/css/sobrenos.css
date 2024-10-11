@@ -1,5 +1,3 @@
-/* Conectado a página sobrenos.html */
-
 @import url('variables.css');
 
 .first,
@@ -144,7 +142,6 @@ body.dark-mode .third .categories .content {
     align-items: center;
     margin-bottom: 126px;
 }
-
 /* Estilos para celulares em modo retrato (portrait) */
 @media (max-width: 568px) {
     .first .right {

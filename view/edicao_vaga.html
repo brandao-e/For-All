@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content category="width=device-width, initial-scale=1.0">
+    <title>For All | Edição de Vaga</title>
+
+    <!--===== AWESOME ICONS =====-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--===== MAIN CSS =====-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!--===== EDIÇÃO VAGA CSS =====-->
+    <link rel="stylesheet" href="../assets/css/edicao_vaga.css">
+
+    <!--===== SCRIPT JS =====-->
+    <script src="../assets/js/script.js"></script>
+
+    <!--===== EDIÇÃO VAGA JS =====-->
+    <script src="../assets/js/edicao_vaga.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            overflow: auto;
+        }
+
+        .header--container .icon {
+            gap: 24px;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <div class="header--container">
+            <div class="logo--nav">
+                <h1 class="logo">FOR ALL</h1>
+                <nav>
+                    <ul class="nav--container">
+                        <li><a href="busca_trabalhadores.html" class="nav--link">ENCONTRE TRABALHADORES</a></li>
+                        <li><a href="historico_contratacoes.html" class="nav--link">HISTÓRICO DE CONTRATAÇÕES</a></li>
+                        <li><a href="networking.html" class="nav--link">NETWORKING</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="theme-icon icon">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-comments"></i>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+    <br/><br/><br/>
+
+  <main>
+    <h2>Atualize a Vaga</h2>
+
+    <form action="" method="post">
+        <div class="container">
+            <div class="left">
+                <div class="row">
+                    <input class="input" type="text" name="tVagaAtu--input" id="tVagaAtu--input-ID" placeholder="Titulo da Vaga Atualizado" required>
+                    <input class="input" type="text" name="salarioAtu--input" id="salarioAtu--input-ID" placeholder="Salário Atualizado" required>
+                </div>
+                <div class="row">
+                    <select name="slcTipoContrato" id="slcTipoContrato-ID">
+                        <option selected>Tipo de contrato</option>
+                        <option value="1">Jovem Aprendiz</option>
+                        <option value="2">Contrato CLT</option>
+                        <option value="3">Terceirizado (CLT)</option>
+                    </select>
+                    <input class="input" type="text" name="cHorariaAtu--input" id="cHorariaAtu--input-ID" placeholder="Carga Horária Diária Atualizada" required>
+                </div>
+                <div class="row">
+                    <select name="slcEstado" id="slcEstado-ID">
+                        <option selected>Estado</option>
+                        <!--Deve ser preenchido com os estados cadastrados do banco de dados-->
+                    </select>
+            
+                    <select name="slcCidade" id="slcCidade-ID">
+                        <option selected>Cidade</option>
+                        <!--Deve ser preenchido com as cidades cadastrados do banco de dados-->
+                    </select>
+                </div>
+                <div class="row">
+                    <input class="input" type="text" name="bairro--input" id="bairro--input-ID" placeholder="Bairro" required>
+                    <input class="input" type="text" name="complemento--input" id="complemento--input-ID" placeholder="Complemento" required>
+                </div>
+            </div>
+            <div class="right">
+                <textarea name="descVaga" id="descVaga-ID" cols="30" rows="10" placeholder="Descrição da Vaga Atualizada"></textarea>
+            </div>
+        </div>
+
+        <div class="btns">
+            <input class="outline--link save" type="submit" value="SALVAR ALTERAÇÕES">
+
+            <input class="outline--link cancel" type="submit" value="CANCELAR EDIÇÃO">
+        </div>
+        
+    </form>
+    </main>
+    <br/><br/><br/>
+
+    <footer>
+        <div class="top">
+            <h2 class="footer--logo">FOR ALL</h2>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <div class="content">
+            <div class="column">
+                <h3 class="bold">Quem Somos?</h3>
+                <a href="sobrenos.html" class="clear--link">Sobre Nós</a>
+                <a href="#" class="clear--link">Contato</a>
+                <a href="#" class="clear--link">Políticas For All</a>
+        </div>
+
+        <div class="column">
+            <h3 class="bold">Recursos</h3>
+            <a href="#" class="clear--link">Central de Ajuda</a>
+            <a href="#" class="clear--link">Como Funciona?</a>
+        </div>
+
+        <div class="column">
+            <h3 class="bold">Encontre Trabalho</h3>
+            <a href="#" class="clear--link">TI e Programação</a>
+            <a href="#" class="clear--link">Design e Multimedia</a>
+            <a href="#" class="clear--link">Marketing e Vendas</a>
+            <a href="#" class="clear--link">Escrita e Conteúdos</a>
+            <a href="#" class="clear--link">Administração</a>
+            <a href="#" class="clear--link">Finanças</a>
+            <a href="#" class="clear--link">Jurídico</a>
+            <a href="#" class="clear--link">Engenharia e Manufatura</a>
+        </div>
+    </footer>
+</body>
+</html>

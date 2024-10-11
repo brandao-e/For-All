@@ -1,0 +1,122 @@
+@import url('variables.css');
+
+main h2 {    
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+main h3 {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-weight-light);
+}
+
+main .categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    border: 1px solid var(--preto-1);
+    border-radius: 14px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+body.dark-mode .content {
+    border: 1px solid var(--gray-100);
+}
+
+.content.selected {
+    border: 1px solid var(--verde-1) !important;
+}
+
+.content .svg path {
+    fill: var(--verde-1);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.row select {
+    width: 303px;
+    height: 44px;
+}
+
+.right {
+    width: 100%;
+}
+
+.right textarea {
+    width: 100%;
+    resize: none;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 28px;
+    right: 126px;
+    display: flex;
+    gap: 30px;
+}
+
+.outline--link.save {
+    background-color: #6d9e67;
+    color: white;
+    border-width: 1px;
+}
+
+.outline--link.save:hover {
+    background-color: #456441 !important;
+}
+
+.outline--link.cancel {
+    border-color: #ab0404 !important;
+}
+
+.outline--link.cancel:hover {
+    background-color: #ab0404 !important;
+    color: white;
+}
+
+footer h3 {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: flex-start;
+    border: none !important;
+    padding: 12px;
+}
+
+
+
+

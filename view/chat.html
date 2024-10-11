@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For All | Chat</title>
+
+    <!--===== AWESOME ICONS =====-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--===== MAIN CSS =====-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!--===== CHAT CSS =====-->
+    <link rel="stylesheet" href="../assets/css/chat.css">
+
+    <!--===== SCRIPT JS =====-->
+    <script src="../assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header--container">
+            <div class="logo--nav">
+                <h1 class="logo">FOR ALL</h1>
+                <nav>
+                    <ul class="nav--container">
+                        <li><a href="busca_vaga.html" class="nav--link">ENCONTRE TRABALHO</a></li>
+                        <li><a href="historico_empresas.html" class="nav--link">HISTÓRICO DE EMPRESAS</a></li>
+                        <li><a href="networking.html" class="nav--link">NETWORKING</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="theme-icon icon">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-comments active"></i>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="left-column">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="  Buscar...">
+                <i class="fa-solid fa-cog settings"></i>
+            </div>
+            
+            <div class="contact selected">
+                <img src="../assets/img/imagemGenerica.png" alt="Profile 1" class="profile-pic">
+                <div class="contact-info">
+                    <strong>Eloisa B.</strong>
+                    <span class="time">14:00</span>
+                    <p>Olá, Ana! Fico feliz pelo convite. Eu tenho...</p>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+
+            <div class="contact">
+                <img src="../assets/img/imagemGenerica.png" alt="Profile 2" class="profile-pic">
+                <div class="contact-info">
+                    <strong>João G.</strong>
+                    <span class="time">20:21</span>
+                    <p>Nós também estamos ansiosos...</p>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+
+            <div class="contact">
+                <img src="../assets/img/imagemGenerica.png" alt="Profile 3" class="profile-pic">
+                <div class="contact-info">
+                    <strong>Pedro C.</strong>
+                    <div class="status-indicator"></div>
+                    <p>Perfeito, às 10h está ótimo para mim.</p>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="chat">
+                <div class="message received">
+                    <img src="../assets/img/imagemGenerica.png" alt="Profile 1" class="profile-pic">
+                    <div class="message-info">
+                        <strong>TechSolutions</strong>
+                        <p>Olá, Eloisa! Aqui é a Ana da empresa TechSolutions. Gostaríamos de agendar uma entrevista com você para a vaga de Desenvolvedora de Software. Quando seria um bom horário para você?</p>
+                    </div>
+                </div>
+                
+                <div class="message sent">
+                    <img src="../assets/img/imagemGenerica.png" alt="Your Profile" class="profile-pic">
+                    <div class="message-info">
+                        <strong>Eloisa B.</strong>
+                        <p>Olá, Ana! Fico feliz pelo convite. Eu tenho disponibilidade na próxima terça-feira, pela manhã. Isso funciona para vocês?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-input">
+                <i class="fa-solid fa-paperclip"></i>
+                <input type="text" placeholder="Envie uma mensagem...">
+                <button class="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

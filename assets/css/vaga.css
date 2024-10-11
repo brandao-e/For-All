@@ -1,0 +1,153 @@
+@import url('variables.css');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.title-container {
+    margin: 0;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.job-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.date {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.job-columns {
+    display: flex;
+}
+
+.job-details {
+    width: 70%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 460px;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+.job-info {
+    margin-bottom: 10px;
+}
+
+.right-column {
+    width: 25%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;    
+}
+
+body.dark-mode .right-column {
+    border-color: white;
+    color: white;
+}
+
+body.dark-mode .job-details {
+    border-color: white;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: black;
+}
+
+body.dark-mode .job-header {
+    color: white;
+}
+
+.salary {
+    font-size: 18px;
+}
+
+.interesse-button, .pergunta-button {
+    border-radius: 10px;
+}
+
+.pergunta-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: transparent;
+    border: 2px solid #6d9e67;
+    color: black;
+}
+
+body.dark-mode .pergunta-button {
+    color: white;
+}
+
+.pergunta-button:hover {
+    background-color: #6d9e67;
+    color: white;
+}
+
+.interesse-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #6d9e67;
+    color: white;
+    border: none;
+}
+
+.interesse-button:hover {
+    background-color: #456441;
+}
+
+.divider {
+    margin: 15px 0;
+    border-top: 1px solid black;
+}
+
+body.dark-mode .divider {
+    border-top: 1px solid white;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.rating {
+    margin-top: 0;
+    text-align: left;
+}

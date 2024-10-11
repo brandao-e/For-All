@@ -1,0 +1,98 @@
+@import url('variables.css');
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+.left-section {
+    width: 70%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.post {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgb(225, 225, 225);
+}
+
+body.dark-mode .post {
+    border: 1px solid white;
+    background-color: #444;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-author {
+    margin-right: 10px;
+}
+
+.post-date {
+    color: #888;
+}
+
+.post-content {
+    margin-bottom: 10px;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.comment-icon, .like-icon, .share-icon {
+    font-size: 16px;
+}
+
+.right-section {
+    width: 30%;
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border-left: 1px solid black;
+    overflow-y: auto;
+}
+
+body.dark-mode .right-section {
+    background-color: #1f1f1f;
+    border-left: 1px solid white;
+    color: black;
+}
+
+.publish-box {
+    background-color: #e0ffe0;
+    border: 1px solid #b5e5b5;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.publish-button {
+    margin-top: 20px;
+    background-color: #6d9e67;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.publish-button:hover {
+    background-color: #456441;
+}
+
+
