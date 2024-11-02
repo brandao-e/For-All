@@ -207,13 +207,20 @@ a {
 }
 
 .icon i.fa-moon,
-.icon i.fa-sun {
+.icon i.fa-sun,
+.icon i.fa-comments,
+.icon i.fa-user {
     color: var(--verde-1);
 }
 
 .icon > i:hover {
     cursor: pointer;
     color: var(--verde-2);
+}
+
+.icon i.active {
+    cursor: pointer;
+    color: var(--verde-2) !important;
 }
 
 .clear--link:hover,
@@ -493,6 +500,36 @@ form button {
 .apple-btn span {
     flex-grow: 1;
     text-align: center;
+}
+
+.selected-categories {
+    margin-bottom: 20px;
+}
+
+#filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+body.dark-mode .filter {
+    background-color: rgba(109, 158, 103, 55%);
+    color: #fff;
+}
+
+.filter {
+    background-color: rgba(109, 158, 103, 35%);
+    color: #0d1117;
+    padding: 8px 11px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.filter .remove-filter {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* Estilos para celulares em modo retrato (portrait) */

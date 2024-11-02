@@ -17,6 +17,9 @@
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
 
+    <!--===== FILTRO JS =====-->
+    <script src="../assets/js/filtro.js"></script>
+
     <style>
         html, body {
             margin: 0;
@@ -33,7 +36,9 @@
     <header>
         <div class="header--container">
             <div class="logo--nav">
-                <h1 class="logo">FOR ALL</h1>
+                <a href="../index.html">
+                    <h1 class="logo">FOR ALL</h1>
+                </a>
                 <nav>
                     <ul class="nav--container">
                         <li><a href="busca_vaga.html" class="nav--link active">ENCONTRE TRABALHO</a></li>
@@ -57,7 +62,7 @@
                 <h3>Categoria da Vaga</h3>
                 <br/>
                 <div class="categories">
-                    <label><input type="checkbox">Todas as categorias</label>
+                    <label><input type="checkbox" checked>Todas as categorias</label>
                     <label><input type="checkbox">TI & Programação</label>
                     <label><input type="checkbox">Design & Multimedia</label>
                     <label><input type="checkbox">Marketing & Vendas</label>
@@ -76,8 +81,7 @@
                 </div>
                 
                 <div class="selected-categories">
-                    <h4>Categorias Selecionadas:</h4>
-                    <!-- Aqui você pode adicionar as categorias selecionadas dinamicamente -->
+                    <div id="filters-container"></div>
                 </div>
                 
                 <div class="vacancy">
@@ -92,7 +96,7 @@
                         <div class="empresa">
                             <p class="descricao">Como Analista de Marketing em nossa equipe, você desempenhará um papel crucial na elaboração e execução de estratégias de marketing que impulsionem o...</p>
                             <br/>
-                            <div class="categoria">Marketing & Vendas</div>
+                            <div class="categoria categoriaMain">Marketing & Vendas</div>
                             <br/>
                             <i class="fa-solid fa-smile"></i> Nome da Empresa
                         </div>
@@ -118,7 +122,7 @@
                         <div class="empresa">
                             <p class="descricao">Buscamos um candidato para integrar nosso time técnico especializado em Data Protection, o estagiário será responsável pela manutenção cotidiana de máquinas...</p>
                             <br/>
-                            <div class="categoria">TI & Programação</div>
+                            <div class="categoria categoriaMain">TI & Programação</div>
                             <br/>
                             <i class="fa-solid fa-smile"></i> Nome da Empresa
                         </div>
