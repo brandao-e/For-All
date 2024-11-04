@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/10/2024 às 19:46
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 02/11/2024 às 21:10
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bdforall`
 --
+CREATE DATABASE IF NOT EXISTS `bdforall` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bdforall`;
 
 -- --------------------------------------------------------
 
@@ -169,8 +171,8 @@ CREATE TABLE `outrasexperiencias` (
 CREATE TABLE `participante` (
   `idParticipante` int(11) NOT NULL,
   `idChat` int(11) DEFAULT NULL,
-  `tipoMembro` enum('Empresa','Funcionario') DEFAULT NULL,
-  `idMemebro` int(11) DEFAULT NULL
+  `idUsuario` int(11) NOT NULL,
+  `dataParticipacao` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -247,6 +249,21 @@ INSERT INTO `trabalhador` (`idTrabalhador`, `primeiroNome`, `ultimoNome`, `email
 (3, 'Gustavo', 'Vechetti', 'Gustavo@gmail.com', '7894561', NULL, 'tenho', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Belle', 'Adm', 'Belle@gmail.com', 'Rapel123', NULL, 'tenho', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Joao', 'Verissimo', 'Joao@gmail.com', '456789', NULL, 'tenho', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `nome` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  `tipoUsuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -377,6 +394,12 @@ ALTER TABLE `trabalhador`
   ADD KEY `subcategoria` (`subcategoria`);
 
 --
+-- Índices de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
 -- Índices de tabela `vagas`
 --
 ALTER TABLE `vagas`
@@ -479,6 +502,12 @@ ALTER TABLE `subcategoria`
 --
 ALTER TABLE `trabalhador`
   MODIFY `idTrabalhador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `vagas`

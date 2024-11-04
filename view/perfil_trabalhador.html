@@ -16,18 +16,6 @@
 
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
-
-    <style>
-        html, body {
-            margin: 0;
-            overflow: auto;
-        }
-
-        .header--container .icon {
-            gap: 24px;
-        }
-    </style>
-
 </head>
 <body>
     <header>
@@ -51,7 +39,7 @@
             </div>
         </div>
     </header>
-    <br/><br/><br/>
+    <br>
 
     <main class="container">
         <div class="left">
@@ -66,17 +54,31 @@
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star-half-alt"></i>
+                    <i class="fa-regular fa-star"></i>
                 </div>
                 <button class="encontrar-trabalho">Encontre Trabalho</button>
             </div>
 
-            <div class="curriculo">
-                <div class="top">
-                    <h3>curriculo</h3>
+            <div class="apresentacoes">
+                <div class="top icon">
+                    <h3>curriculo</h3> 
+                    <label for="curriculoId"><i class="fa-solid fa-trash"></i></label>
+                </div>
 
-                    <i class="fa-regular fa-trash"></i>
+                <div class="fileGroup full">
+                    <span>CurriculumVittae.pdf</span>
+                    <input type="file" name="curriculo" id="curriculoId">
+                </div>
+
+                <div class="top icon">
+                    <h3>Escolaridade</h3> 
+                    <label for="curriculoId"><i class="fa-solid fa-plus"></i></label>
+                </div>
+
+                <div class="fileGroup">
+                    <span>Vazio...</span>
+                    <input type="file" name="curriculo" id="curriculoId">
                 </div>
             </div>
 
@@ -90,16 +92,119 @@
                     </label>
                     <input id="apresentacaoId" type="file" accept="video/*">
                 </div>
-            </div>            
-
-            <div class="historico">
-                <h3>Histórico de Contratações</h3>
-                <h4>Vazio...</h4    >
+                <br>
+                <button class="solid--link">Salvar</button>
             </div>
         </div>
 
         <div class="right">
-            
+            <div class="apresentacoes">
+                <div class="top icon">
+                    <h3>TI & Programação</h3>
+
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ut quos necessitatibus consectetur nisi dicta, id totam ipsam aspernatur dolore natus. Eum, omnis praesentium eligendi iusto suscipit officia libero iste.</p>
+                </div>
+
+                <div class="top">
+                    <h3>Subcategoria do Serviço</h3>
+                </div>
+
+                <div class="content">
+                    <p>Desenvolvimento Web - Frontend</p>
+                </div>
+            </div>
+
+            <div class="apresentacoes">
+                <h3>Portifólio</h3>
+                <br/>
+                <div class="background">
+                    <label for="apresentacaoId">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <span>Adicione um PDF com alguns projetos para demonstrar suas habilidades para as empresas com interesse em você</span>
+                    </label>
+                    <input id="apresentacaoId" type="file" accept="video/*">
+                </div>
+                <br>
+                <button class="solid--link">Salvar</button>
+            </div>
+
+
+            <h3>Aqui tem algumas vagas que podem te interessar</h3>
+
+            <div class="apresentacoes p-2">
+                <div class="group">
+                    <div class="left">
+                        <h4>Estágio TI</h4>
+                        <div class="row">
+                            <div class="person">
+                                <i class="fa-solid fa-circle-user"></i>
+                                <span>Eloisa B.</span>
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-alt"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="solid--link">Demonstrar Interesse</button>
+                        <span>R$ 1400,00</span>
+                    </div>
+                </div>                
+
+                <div class="group">
+                    <div class="left">
+                        <h4>Estágio TI</h4>
+                        <div class="row">
+                            <div class="person">
+                                <i class="fa-solid fa-circle-user"></i>
+                                <span>Eloisa B.</span>
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-alt"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="solid--link">Demonstrar Interesse</button>
+                        <span>R$ 1400,00</span>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="left">
+                        <h4>Estágio TI</h4>
+                        <div class="row">
+                            <div class="person">
+                                <i class="fa-solid fa-circle-user"></i>
+                                <span>Eloisa B.</span>
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-alt"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="solid--link">Demonstrar Interesse</button>
+                        <span>R$ 1400,00</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
