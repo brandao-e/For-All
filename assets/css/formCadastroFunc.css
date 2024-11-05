@@ -107,7 +107,7 @@ body.dark-mode .right .content .row .row-item svg path {
     font-size: var(--font-size-lg);
 }
 
-.btn input {
+.btn button {
     position: absolute;
     bottom: 28px;
     right: 126px;

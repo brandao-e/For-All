@@ -6,6 +6,8 @@ class Usuario implements JsonSerializable {
     private $senha;
     private $salt; // Utilizado para diferenciar o HASH de senhas na hora da criptografia
     private $tipo; // 0 para funcionário, 1 para empresa
+    private $idEmpresa;
+    private $idTrabalhador;
     private $con;
 
     function jsonSerialize(): mixed {
@@ -15,7 +17,9 @@ class Usuario implements JsonSerializable {
             'email' => $this->email,
             'senha' => $this->senha,
             'salt' => $this->salt,
-            'tipo' => $this->tipo
+            'tipo' => $this->tipo,
+            'idEmpresa' => $this->idEmpresa,
+            'idTrabalhador' => $this->idTrabalhador
         ];
     }
 
@@ -69,6 +73,8 @@ class Usuario implements JsonSerializable {
             $usuario->senha = $valor['senha'];
             $usuario->salt = $valor['salt'];
             $usuario->tipo = $valor['tipo'];
+            $usuario->idEmpresa = $valor['idEmpresa'];
+            $usuario->idTrabalhador = $valor['idTrabalhador'];
 
             $dados[] = $usuario;
         }
@@ -90,8 +96,35 @@ class Usuario implements JsonSerializable {
         $usuario->senha = $valor['senha'];
         $usuario->salt = $valor['salt'];
         $usuario->tipo = $valor['tipo'];
+        $usuario->idEmpresa = $valor['idEmpresa'];
+        $usuario->idTrabalhador = $valor['idTrabalhador'];
 
         return $usuario;
     }
+
+    function Login() {
+        $sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+        $valores = array($this->email, $this->senha);
+        $exec = $this->con->prepare($sql);
+        $exec->execute($valores);
+        $valor = $exec->fetch(PDO::FETCH_ASSOC);
+    
+        // Se não houver resultados, retorne false
+        if (!$valor) {
+            return false;
+        }
+    
+        $usuario = new Usuario();
+        $usuario->id = $valor['idUsuario'];
+        $usuario->nome = $valor['nome'];
+        $usuario->email = $valor['email'];
+        $usuario->senha = $valor['senha'];
+        $usuario->salt = $valor['salt'];
+        $usuario->tipo = $valor['tipoUsuario'];
+        $usuario->idEmpresa = $valor['idEmpresa'];
+        $usuario->idTrabalhador = $valor['idTrabalhador'];
+    
+        return $usuario;
+    }    
 }
 ?>

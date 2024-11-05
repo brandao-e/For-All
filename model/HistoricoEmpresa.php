@@ -4,14 +4,27 @@ class HistoricoEmpresa implements JsonSerializable {
     private $dataContratacao;
     private $idEmpresa;
     private $idTrabalhador;
+
+    private $empresaPrimeiroNome;
+    private $vagaTitulo;
+    private $vagaSalario;
+    private $vagaDesc;
+    private $vagaServico;
+    private $idUsuario;
     private $con;
 
     function jsonSerialize(): mixed {
         return [
-            'id_contratacao' => $this->idContratacao,
-            'data_contratacao' => $this->dataContratacao,
-            'id_empresa' => $this->idEmpresa,
-            'id_trabalhador' => $this->idTrabalhador
+            'idContratacao' => $this->idContratacao,
+            'dataContratacao' => $this->dataContratacao,
+            'idEmpresa' => $this->idEmpresa,
+            'idTrabalhador' => $this->idTrabalhador,
+
+            'primeiroNome' => $this->empresaPrimeiroNome,
+            'tituloVaga' => $this->vagaTitulo,
+            'salarioVaga' => $this->vagaSalario,
+            'descricao' => $this->vagaDesc,
+            'servico' => $this->vagaServico
         ];
     }
 
@@ -51,24 +64,45 @@ class HistoricoEmpresa implements JsonSerializable {
     }
 
     function Consultar() {
-        $sql = "SELECT * FROM historico_empresas";
+        $sql = "SELECT DISTINCT he.idContratacao,
+                    e.primeiroNome,
+                    he.idEmpresa,
+                    v.tituloVaga,
+                    he.dataContratacao,
+                    v.salarioVaga,
+                    v.descricao,
+                    s.servico,
+                    he.idTrabalhador
+                FROM historicoempresas he
+                INNER JOIN empresa e ON e.idEmpresa = he.idEmpresa
+                INNER JOIN vagas v ON v.idEmpresa = he.idEmpresa
+                INNER JOIN servico s ON v.servicoVaga = s.idServico
+                INNER JOIN usuario u ON u.idTrabalhador = he.idTrabalhador
+                WHERE u.idUsuario = ?";
+    
+        $valores = array($this->idUsuario);
         $exec = $this->con->prepare($sql);
-        $exec->execute();
-
+        $exec->execute($valores);
+    
         $dados = array();
-
+    
         foreach($exec->fetchAll() as $valor) {
             $historico = new HistoricoEmpresa();
             $historico->idContratacao = $valor['idContratacao'];
-            $historico->dataContratacao = $valor['dataContratacao'];
+            $historico->empresaPrimeiroNome = $valor['primeiroNome'];
             $historico->idEmpresa = $valor['idEmpresa'];
+            $historico->vagaTitulo = $valor['tituloVaga'];
+            $historico->dataContratacao = $valor['dataContratacao'];
+            $historico->vagaSalario = $valor['salarioVaga'];
+            $historico->vagaDesc = $valor['descricao'];
+            $historico->vagaServico = $valor['servico'];
             $historico->idTrabalhador = $valor['idTrabalhador'];
-
+    
             $dados[] = $historico;
         }
-
+    
         return $dados;
-    }
+    }    
 
     function RetornaDados() {
         $sql = "SELECT * FROM historico_empresas WHERE idContratacao = ?";

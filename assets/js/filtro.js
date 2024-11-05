@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll(".categories input[type='checkbox']");
     const filtersContainer = document.getElementById("filters-container");
     const vacancyList = document.querySelectorAll(".vacancy");
+    const searchInput = document.querySelector(".search-bar input"); // Seleciona a barra de pesquisa
+
+    // Adiciona um evento de entrada à barra de pesquisa
+    searchInput.addEventListener("input", filterVacancies);
 
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", function () {
@@ -32,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     removeFilter(filterName);
                 }
             }
-            filterVacancies();
+            filterVacancies(); // Chama a função de filtragem
         });
     });
 
@@ -68,9 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
             .filter(cb => cb.checked)
             .map(cb => cb.nextSibling.textContent.trim());
 
+        // Obtém o texto da barra de pesquisa
+        const searchTerm = searchInput.value.toLowerCase();
+
         vacancyList.forEach(vacancy => {
             const category = vacancy.querySelector(".categoriaMain").textContent.trim();
-            if (selectedFilters.includes("Todas as categorias") || selectedFilters.length === 0 || selectedFilters.includes(category)) {
+            const title = vacancy.querySelector("h3").textContent.trim().toLowerCase(); // Obtém o título da vaga
+
+            // Verifica se a vaga deve ser exibida com base nos filtros de categoria e na pesquisa
+            const matchesCategory = selectedFilters.includes("Todas as categorias") || selectedFilters.length === 0 || selectedFilters.includes(category);
+            const matchesSearch = title.includes(searchTerm); // Verifica se o título contém o termo de pesquisa
+
+            if (matchesCategory && matchesSearch) {
                 vacancy.style.display = "block"; // Exibe a vaga
             } else {
                 vacancy.style.display = "none"; // Esconde a vaga

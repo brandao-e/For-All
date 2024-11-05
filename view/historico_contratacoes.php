@@ -1,10 +1,17 @@
+<?php 
+    session_start();
+    include_once("../controller/HistoricoTrabalhadorController.php");
+
+    $controller = new HistoricoTrabalhadorController();
+    $trabalhadores = $controller->getHistoricoTrabalhadores($_SESSION['usuario_id']);
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For All | Histórico de Empresas</title>
+    <title>For All | Histórico de Contratações</title>
 
     <!--===== AWESOME ICONS =====-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,8 +19,8 @@
     <!--===== MAIN CSS =====-->
     <link rel="stylesheet" href="../assets/css/main.css">
 
-    <!--===== HISTÓRICO TRABALHADOR CSS =====-->
-    <link rel="stylesheet" href="../assets/css/historico_empresas.css">
+    <!--===== HISTÓRICO DE CONTRATAÇÕES CSS =====-->
+    <link rel="stylesheet" href="../assets/css/historico_contratacoes.css">
 
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
@@ -42,8 +49,8 @@
                 </a>
                 <nav>
                     <ul class="nav--container">
-                        <li><a href="busca_vaga.html" class="nav--link">ENCONTRE TRABALHO</a></li>
-                        <li><a href="historico_empresas.html" class="nav--link active">HISTÓRICO DE EMPRESAS</a></li>
+                        <li><a href="busca_trabalhadores.html" class="nav--link">ENCONTRE TRABALHADORES</a></li>
+                        <li><a href="historico_contratacoes.html" class="nav--link active">HISTÓRICO DE CONTRATAÇÕES</a></li>
                         <li><a href="networking.html" class="nav--link">NETWORKING</a></li>
                     </ul>
                 </nav>
@@ -60,7 +67,7 @@
     <main>
         <div class="container">
             <div class="left">
-                <h3>Categoria da Vaga</h3>
+                <h3>Categoria de Trabalhadores</h3>
                 <br/>
                 <div class="categories">
                     <label><input type="checkbox" checked> Todas as categorias</label>
@@ -78,62 +85,46 @@
             <div class="right">
                 <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Pesquise vagas em que já foi contratado..."/>
+                    <input type="text" placeholder="Pesquise contratações antigas..."/>
                 </div>
                 
                 <div class="selected-categories">
                     <div id="filters-container"></div>
                 </div>
-                
-                <div class="vacancy">
-                    <div class="header">
-                        <h3>Analista de Marketing</h3>
-                        <p class="salario">R$ 2000</p>
-                    </div>
-                    <p class="data-publicacao">Publicado: há 16 horas</p>
-                    
-                    <div class="vaga-info">
-                        <div class="empresa">
-                            <p class="descricao">Como Analista de Marketing em nossa equipe, você desempenhará um papel crucial na elaboração e execução de estratégias de marketing que impulsionem o...</p>
-                            <br/>
-                            <div class="categoria categoriaMain">Marketing & Vendas</div>
-                            <br/>
-                            <i class="fa-solid fa-smile"></i> Eloisa B.
+                <?php foreach ($trabalhadores as $trabalhador): ?>
+                    <div class="vacancy">
+                        <div class="header">
+                            <h3><?= htmlspecialchars($trabalhador->primeiroNome . " " . $trabalhador->ultimoNome) ?></h3>
+                        </div>
+                        <p class="email"><?= htmlspecialchars($trabalhador->email) ?></p>
+                        
+                        <div class="vaga-info">
+                            <div class="empresa">
+                                <p class="descricao"><?= htmlspecialchars($trabalhador->biografia) ?></p>
+                                <br/>
+                                <div class="categoria categoriaMain"><?= htmlspecialchars($trabalhador->servico) ?></div>
+                                <div class="categoria"><?= htmlspecialchars($trabalhador->subcategoria) ?></div>
+                                <br/>
+                            </div>
                         </div>
                     </div>
-                    <div class="rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-alt"></i>
-                    </div>
-                </div>
+                <?php endforeach; ?>
                 
-                <div class="vacancy">
+                <!-- <div class="vacancy">
                     <div class="header">
-                        <h3>Estagiário de TI</h3>
-                        <p class="salario">R$ 875</p>
+                        <h3>Eloisa Brandão</h3>
                     </div>
-                    <p class="data-publicacao">Publicado: há 1 dia</p>
+                    <p class="email">eloisa_email@gmail.com</p>
                     
                     <div class="vaga-info">
                         <div class="empresa">
-                            <p class="descricao">Buscamos um candidato para integrar nosso time técnico especializado em Data Protection, o estagiário será responsável pela manutenção cotidiana de máquinas...</p>
+                            <p class="descricao">Sou um desenvolvedor experiente na criação de sites para pequenas e médias empresas. Se você está tentando conquistar trabalhos, listar seus serviços ou cria..</p>
                             <br/>
                             <div class="categoria categoriaMain">TI & Programação</div>
                             <br/>
-                            <i class="fa-solid fa-smile"></i> Eloisa B.
                         </div>
                     </div>
-                    <div class="rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-alt"></i>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
 

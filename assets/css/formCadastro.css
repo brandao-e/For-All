@@ -37,7 +37,12 @@ main h2 {
     flex-direction: column;
 }
 
-.full-row input {
+.full-row {
+    width: 100%;
+}
+
+.full-row input,
+.full-row button {
     width: 100%;
 }
 

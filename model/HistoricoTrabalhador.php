@@ -1,17 +1,32 @@
 <?php 
-class HistoricoTrabalhadore implements JsonSerializable {
+class HistoricoTrabalhador implements JsonSerializable {
     private $idContratacao;
     private $dataContratacao;
     private $idTrabalhador;
     private $idEmpresa;
     private $con;
 
+    private $idUsuario;
+    private $primeiroNome;
+    private $ultimoNome;
+    private $email;
+    private $biografia;
+    private $servico;
+    private $subcategoria;
+
     function jsonSerialize(): mixed {
         return [
             'id_contratacao' => $this->idContratacao,
             'data_contratacao' => $this->dataContratacao,
             'id_trabalhador' => $this->idTrabalhador,
-            'id_empresa' => $this->idEmpresa
+            'id_empresa' => $this->idEmpresa,
+
+            'primeiroNome' => $this->primeiroNome,
+            'ultimoNome' => $this->ultimoNome,
+            'email' => $this->email,
+            'biografia' => $this->biografia,
+            'servico' => $this->servico,
+            'subcategoria' => $this->subcategoria
         ];
     }
 
@@ -51,18 +66,38 @@ class HistoricoTrabalhadore implements JsonSerializable {
     }
 
     function Consultar() {
-        $sql = "SELECT * FROM historico_trabalhadores";
+        $sql = "SELECT DISTINCT hc.idContratacaoFuncio,
+                        hc.idEmpresa,
+                        hc.dataContratacao,
+                        t.primeiroNome,
+                        t.ultimoNome,
+                        t.email,
+                        t.biografia,
+                        s.servico,
+                        sb.subcategoria
+            FROM historicofuncionario hc
+            INNER JOIN trabalhador t ON t.idTrabalhador = hc.idTrabalhador
+            INNER JOIN servico s ON s.idServico = t.servico
+            INNER JOIN subcategoria sb ON sb.idSubcategoria = t.subcategoria  -- Corrigido alias para 'sb'
+            INNER JOIN usuario u ON u.idEmpresa = hc.idEmpresa
+            WHERE u.idUsuario = ?";
+        $valores = array($this->idUsuario);
         $exec = $this->con->prepare($sql);
-        $exec->execute();
+        $exec->execute($valores);
 
         $dados = array();
 
         foreach($exec->fetchAll() as $valor) {
             $historico = new HistoricoTrabalhadore();
             $historico->idContratacao = $valor['idContratacao'];
-            $historico->dataContratacao = $valor['dataContratacao'];
-            $historico->idTrabalhador = $valor['idTrabalhador'];
             $historico->idEmpresa = $valor['idEmpresa'];
+            $historico->dataContratacao = $valor['dataContratacao'];
+            $historico->primeiroNome = $valor['primeiroNome'];
+            $historico->ultimoNome = $valor['ultimoNome'];
+            $historico->email = $valor['email'];
+            $historico->biografia = $valor['biografia'];
+            $historico->servico = $valor['servico'];
+            $historico->subcategoria = $valor['subcategoria'];
 
             $dados[] = $historico;
         }
