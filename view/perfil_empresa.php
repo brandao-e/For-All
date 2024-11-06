@@ -47,7 +47,7 @@
                 <nav>
                     <ul class="nav--container">
                         <li><a href="busca_trabalhadores.html" class="nav--link">ENCONTRE TRABALHADORES</a></li>
-                        <li><a href="historico_contratacoes.html" class="nav--link">HISTÓRICO DE CONTRATAÇÕES</a></li>
+                        <li><a href="historico_contratacoes.php" class="nav--link">HISTÓRICO DE CONTRATAÇÕES</a></li>
                         <li><a href="networking.html" class="nav--link">NETWORKING</a></li>
                     </ul>
                 </nav>

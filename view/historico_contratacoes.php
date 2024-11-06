@@ -4,6 +4,17 @@
 
     $controller = new HistoricoTrabalhadorController();
     $trabalhadores = $controller->getHistoricoTrabalhadores($_SESSION['usuario_id']);
+
+    $itensPorPagina = 5;
+    $totalTrabalhadores = count($trabalhadores);
+    $totalPaginas = ceil($totalTrabalhadores / $itensPorPagina);
+
+    // Obtém a página atual da URL (ou define como 1 se não estiver presente)
+    $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+    $offset = ($paginaAtual - 1) * $itensPorPagina;
+
+    // Extrai as trabalhadores da página atual
+    $trabalhadoresPagina = array_slice($trabalhadores, $offset, $itensPorPagina);
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +106,15 @@
                     <div class="vacancy">
                         <div class="header">
                             <h3><?= htmlspecialchars($trabalhador->primeiroNome . " " . $trabalhador->ultimoNome) ?></h3>
+                            <p>
+                                Contratado em:
+                                <?php 
+                                    // Define o locale para exibir o mês em português
+                                    setlocale(LC_TIME, 'pt_BR.UTF-8', 'portuguese');
+                                    $dataFormatada = strftime('%d %b %Y', strtotime($trabalhador->dataContratacao));
+                                    echo htmlspecialchars($dataFormatada); 
+                                ?>
+                            </p>
                         </div>
                         <p class="email"><?= htmlspecialchars($trabalhador->email) ?></p>
                         
@@ -128,14 +148,19 @@
             </div>
         </div>
 
-        <div class="pagination">
-            <button class="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-        </div>
+        <?php 
+            if ($totalPaginas > 1) {
+                echo "<div class='pagination'>";
+
+                // Mostra os botões de paginação
+                for ($i = 1; $i <= $totalPaginas; $i++) {
+                    echo "<a href='?pagina=$i' class='" . ($i === $paginaAtual ? "active" : "") . "'>$i</a>";
+                }
+
+                echo "</div>";
+            }
+        ?>
+
     </main>
 
     <br/><br/><br/>
