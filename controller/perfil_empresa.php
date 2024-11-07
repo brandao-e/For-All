@@ -1,9 +1,23 @@
 <?php
     session_start();
-    if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] !== 1) {
-        header("Location: login.php");
+  if (!isset($_SESSION['idEmp'])) {
+        header("Location: ../view/login.php");
         exit;
     }
+
+    $id = $_SESSION['idEmp'];
+    require 'conexao.php';
+    $sql = "SELECT * FROM empresa WHERE idempresa = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $empresa = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+    $sql = "SELECT idVaga, tituloVaga, salarioVaga, dataPublicacao, statusVaga FROM vagas WHERE idEmpresa = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $vagas = $stmt->fetch(PDO::FETCH_ASSOC);  
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +61,7 @@
                 <nav>
                     <ul class="nav--container">
                         <li><a href="busca_trabalhadores.html" class="nav--link">ENCONTRE TRABALHADORES</a></li>
-                        <li><a href="historico_contratacoes.html" class="nav--link">HISTÓRICO DE CONTRATAÇÕES</a></li>
+                        <li><a href="historico_contratacoes.php" class="nav--link">HISTÓRICO DE CONTRATAÇÕES</a></li>
                         <li><a href="networking.html" class="nav--link">NETWORKING</a></li>
                     </ul>
                 </nav>
@@ -66,9 +80,9 @@
             <div class="empresa-info">
                 <img src="../assets/img/imagemGenerica.png" alt="Logo da Empresa" class="empresa-foto">
                 <div class="empresa-detalhes">
-                    <h2>Ana.S</h2>
-                    <p>anaempresa@gmail.com</p>
-                    <p>Defina o CNPJ</p>
+                    <h2><?php echo $empresa['primeiroNome'];?></h2>
+                    <p><?php echo $empresa['email'];?></p>
+                    <p><?php echo $empresa['cnpj'];?></p>
                 </div>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -77,7 +91,11 @@
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star-half-alt"></i>
                 </div>
-                <button class="encontrar-trabalhadores">Encontre Trabalhadores</button>
+                <form action="mostraInteresse.php" method="post">
+                <button class="encontrar-trabalhadores" type="submit">Encontre Trabalhadores</button>
+                <a href="../view/cadVaga.php">cadastrar vaga</a>
+                </form>
+               
             </div>
 
             <div class="apresentacoes">
@@ -93,35 +111,30 @@
         </div>
 
         <div class="right">
-            <div class="vaga">
-                <h3>Estagiário de TI <i class="fa-solid fa-ellipsis-h"></i></h3>
-                <p>Publicado: há 1 dia</p>
-                <div class="vaga-footer">
-                    <p class="salary">Salário: R$ 875</p>
-                    <button class="analisar-trabalhadores">Analisando Trabalhadores</button>
-                </div>
-            </div>
-
-            <div class="vaga">
-                <h3>Analista de Marketing <i class="fa-solid fa-ellipsis-h"></i></h3>
-                <p>Publicado: há 16 dias</p>
-                <div class="vaga-footer">
-                    <p class="salary">Salário: R$ 2000</p>
-                    <button class="analisar-trabalhadores">Analisando Trabalhadores</button>
-                </div>
-            </div>
-
-            <div class="vaga">
-                <h3>Assistente Administrativo<i class="fa-solid fa-ellipsis-h"></i></h3>
-                <p>Publicado: há 10 dias</p>
-                <div class="vaga-footer">
-                    <p class="salary">Salário: R$ 1600</p>
-                    <button class="analisar-trabalhadores">Cancelado</button>
-                </div>
-            </div>
+            <h2>Projetos em que estou contratando</h2>
+            <?php if (!empty($vagas)): ?>
+                <?php for($i = 0;  $i < count($vagas); $i++){ ?>
+                    <div class="vaga">
+                        <h3>
+                            <a href="vaga_empresa.php?idVaga=<?php echo $vagas['idVaga']; ?>" class="vaga-titulo">
+                                <?php echo $vagas['tituloVaga']; ?>
+                            </a>
+                        </h3>
+                        <p>Publicado: <?php echo $vagas['dataPublicacao']; ?></p>
+                        <div class="vaga-footer">
+                            <p class="salary">Salário: R$ <?php echo$vagas['salarioVaga']; ?></p>
+                            <div class="vaga-status <?php echo $vagas['statusVaga']; ?>">
+                                <?php echo $vagas['statusVaga']; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            <?php else:  ?>
+                <p>Nenhuma vaga disponível.</p>
+            <?php endif; ?>
         </div>
     </main>
-
+    <br/><br/><br/>
     <br/><br/><br/>
 
     <footer>

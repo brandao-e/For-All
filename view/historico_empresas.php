@@ -5,6 +5,17 @@
 
     $controller = new HistoricoEmpresasController();
     $vagas = $controller->getHistoricoEmpresas($_SESSION['usuario_id']);
+
+    $itensPorPagina = 5;
+    $totalVagas = count($vagas);
+    $totalPaginas = ceil($totalVagas / $itensPorPagina);
+
+    // Obtém a página atual da URL (ou define como 1 se não estiver presente)
+    $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+    $offset = ($paginaAtual - 1) * $itensPorPagina;
+
+    // Extrai as vagas da página atual
+    $vagasPagina = array_slice($vagas, $offset, $itensPorPagina);
 ?>
 
 <!DOCTYPE html>
@@ -93,46 +104,60 @@
                     <div id="filters-container"></div>
                 </div>
                 <div class="container" style="display: flex; flex-direction: column;">
-                <?php foreach ($vagas as $vaga): ?>
-                    <div class="vacancy">
-                        <div class="header">
-                            <h3><?= htmlspecialchars($vaga->vagaTitulo) ?></h3>
-                            <p class="salario">R$ <?= htmlspecialchars(number_format($vaga->vagaSalario, 2, ',', '.')) ?></p>
-                        </div>
-                        
-                        <!-- Formatação da data para "16 maio 2024" -->
-                        <p class="data-publicacao">
-                            Publicado em: 
-                            <?php 
-                                // Define o locale para exibir o mês em português
-                                setlocale(LC_TIME, 'pt_BR.UTF-8', 'portuguese');
-                                $dataFormatada = strftime('%d %b %Y', strtotime($vaga->dataContratacao));
-                                echo htmlspecialchars($dataFormatada); 
-                            ?>
-                        </p>
-                        
-                        <div class="vaga-info">
-                            <div class="empresa">
-                                <p class="descricao"><?= htmlspecialchars($vaga->vagaDesc) ?></p>
-                                <br/>
-                                <div class="categoria categoriaMain"><?= htmlspecialchars($vaga->vagaServico) ?></div>
-                                <br/>
-                                <i class="fa-solid fa-smile"></i> <?= htmlspecialchars($vaga->empresaPrimeiroNome) ?>
+                    <?php foreach ($vagasPagina as $vaga): ?>
+                        <div class="vacancy">
+                            <div class="header">
+                                <h3><?= htmlspecialchars($vaga->vagaTitulo) ?></h3>
+                                <p class="salario">R$ <?= htmlspecialchars(number_format($vaga->vagaSalario, 2, ',', '.')) ?></p>
+                            </div>
+                            
+                            <!-- Formatação da data para "16 maio 2024" -->
+                            <p class="data-publicacao">
+                                Publicado em: 
+                                <?php 
+                                    // Define o locale para exibir o mês em português
+                                    setlocale(LC_TIME, 'pt_BR.UTF-8', 'portuguese');
+                                    $dataFormatada = strftime('%d %b %Y', strtotime($vaga->dataContratacao));
+                                    echo htmlspecialchars($dataFormatada); 
+                                ?>
+                            </p>
+                            
+                            <div class="vaga-info">
+                                <div class="empresa">
+                                    <p class="descricao"><?= htmlspecialchars($vaga->vagaDesc) ?></p>
+                                    <br/>
+                                    <div class="categoria categoriaMain"><?= htmlspecialchars($vaga->vagaServico) ?></div>
+                                    <br/>
+                                    <i class="fa-solid fa-smile"></i> <?= htmlspecialchars($vaga->empresaPrimeiroNome) ?>
+                                </div>
+                            </div>
+                            
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-alt"></i>
                             </div>
                         </div>
-                        
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
+
+        <?php 
+            if ($totalPaginas > 1) {
+                echo "<div class='pagination'>";
+
+                // Mostra os botões de paginação
+                for ($i = 1; $i <= $totalPaginas; $i++) {
+                    echo "<a href='?pagina=$i' class='" . ($i === $paginaAtual ? "active" : "") . "'>$i</a>";
+                }
+
+                echo "</div>";
+            }
+        ?>
+
     </main>
 
     <br/><br/><br/>

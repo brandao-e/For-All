@@ -85,11 +85,16 @@
 }
 
 .pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin-top: 20px;
 }
 
-.pagination button {
+.pagination a {
+    display: block;
     background-color: transparent; 
     font-weight: bold;
     color: #6d9e67;
@@ -102,12 +107,12 @@
     text-align: center;
 }
 
-.pagination button:hover {
+.pagination a:hover {
     background-color: #6d9e67; 
     color: white;
 }
 
-.pagination button.active {
+.pagination a.active {
     background-color: #6d9e67;
     color: white;
     border: 1px solid #6d9e67;

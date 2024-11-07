@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Nov-2024 às 19:37
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Tempo de geração: 06/11/2024 às 02:08
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,10 +26,9 @@ USE `bdforall`;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `chat`
+-- Estrutura para tabela `chat`
 --
 
-DROP TABLE IF EXISTS `chat`;
 CREATE TABLE `chat` (
   `idChat` int(11) NOT NULL,
   `tipoChat` enum('Individual','Grupo') DEFAULT NULL,
@@ -40,17 +39,16 @@ CREATE TABLE `chat` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cidade`
+-- Estrutura para tabela `cidade`
 --
 
-DROP TABLE IF EXISTS `cidade`;
 CREATE TABLE `cidade` (
   `idCidade` int(11) NOT NULL,
   `cidade` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `cidade`
+-- Despejando dados para a tabela `cidade`
 --
 
 INSERT INTO `cidade` (`idCidade`, `cidade`) VALUES
@@ -59,26 +57,24 @@ INSERT INTO `cidade` (`idCidade`, `cidade`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `comentarios`
+-- Estrutura para tabela `comentarios`
 --
 
-DROP TABLE IF EXISTS `comentarios`;
 CREATE TABLE `comentarios` (
   `idComentario` int(11) NOT NULL,
   `idPublicacao` int(11) DEFAULT NULL,
-  `idComentador` int(11) DEFAULT NULL,
-  `tipoComentador` enum('Empresa','Funcionario') DEFAULT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
   `dataComentario` date DEFAULT NULL,
-  `horaComentario` time DEFAULT NULL
+  `horaComentario` time DEFAULT NULL,
+  `comentario` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curtidas`
+-- Estrutura para tabela `curtidas`
 --
 
-DROP TABLE IF EXISTS `curtidas`;
 CREATE TABLE `curtidas` (
   `idCurtida` int(11) NOT NULL,
   `idPublicacao` int(11) DEFAULT NULL,
@@ -91,10 +87,9 @@ CREATE TABLE `curtidas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `empresa`
+-- Estrutura para tabela `empresa`
 --
 
-DROP TABLE IF EXISTS `empresa`;
 CREATE TABLE `empresa` (
   `idempresa` int(11) NOT NULL,
   `primeiroNome` varchar(100) DEFAULT NULL,
@@ -109,7 +104,7 @@ CREATE TABLE `empresa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `empresa`
+-- Despejando dados para a tabela `empresa`
 --
 
 INSERT INTO `empresa` (`idempresa`, `primeiroNome`, `ultimoNome`, `email`, `senha`, `salt`, `videoApresentacao`, `cnpj`, `fotoPerfil`, `tipoUsuario`) VALUES
@@ -123,7 +118,6 @@ CREATE TRIGGER `after_insert_empresa` AFTER INSERT ON `empresa` FOR EACH ROW INS
     VALUES (CONCAT(NEW.primeiroNome, ' ', NEW.ultimoNome), NEW.email, NEW.senha, NEW.salt, 1, NEW.idempresa)
 $$
 DELIMITER ;
-
 DELIMITER $$
 CREATE TRIGGER `after_update_empresa` AFTER UPDATE ON `empresa` FOR EACH ROW UPDATE usuario
     SET nome = CONCAT(NEW.primeiroNome, ' ', NEW.ultimoNome),
@@ -139,17 +133,16 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `estado`
+-- Estrutura para tabela `estado`
 --
 
-DROP TABLE IF EXISTS `estado`;
 CREATE TABLE `estado` (
   `idEstado` int(11) NOT NULL,
   `estado` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `estado`
+-- Despejando dados para a tabela `estado`
 --
 
 INSERT INTO `estado` (`idEstado`, `estado`) VALUES
@@ -158,10 +151,9 @@ INSERT INTO `estado` (`idEstado`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `historicoempresas`
+-- Estrutura para tabela `historicoempresas`
 --
 
-DROP TABLE IF EXISTS `historicoempresas`;
 CREATE TABLE `historicoempresas` (
   `idContratacao` int(11) NOT NULL,
   `idempresa` int(11) DEFAULT NULL,
@@ -170,19 +162,20 @@ CREATE TABLE `historicoempresas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `historicoempresas`
+-- Despejando dados para a tabela `historicoempresas`
 --
 
 INSERT INTO `historicoempresas` (`idContratacao`, `idempresa`, `dataContratacao`, `idTrabalhador`) VALUES
-(1, 3, '2024-09-19', 6);
+(1, 3, '2024-09-19', 6),
+(2, 3, '2024-09-11', 6),
+(3, 3, '2024-10-20', 6);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `historicofuncionario`
+-- Estrutura para tabela `historicofuncionario`
 --
 
-DROP TABLE IF EXISTS `historicofuncionario`;
 CREATE TABLE `historicofuncionario` (
   `idContratacaoFuncio` int(11) NOT NULL,
   `idFuncionario` int(11) DEFAULT NULL,
@@ -190,13 +183,20 @@ CREATE TABLE `historicofuncionario` (
   `dataContratacao` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `historicofuncionario`
+--
+
+INSERT INTO `historicofuncionario` (`idContratacaoFuncio`, `idFuncionario`, `idempresa`, `dataContratacao`) VALUES
+(1, 6, 3, '2024-09-11'),
+(2, 6, 3, '2024-08-15');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `mensagem`
+-- Estrutura para tabela `mensagem`
 --
 
-DROP TABLE IF EXISTS `mensagem`;
 CREATE TABLE `mensagem` (
   `idMensagem` int(11) NOT NULL,
   `idChat` int(11) DEFAULT NULL,
@@ -210,10 +210,9 @@ CREATE TABLE `mensagem` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `participante`
+-- Estrutura para tabela `participante`
 --
 
-DROP TABLE IF EXISTS `participante`;
 CREATE TABLE `participante` (
   `idParticipante` int(11) NOT NULL,
   `idChat` int(11) DEFAULT NULL,
@@ -224,14 +223,12 @@ CREATE TABLE `participante` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `publicacoes`
+-- Estrutura para tabela `publicacoes`
 --
 
-DROP TABLE IF EXISTS `publicacoes`;
 CREATE TABLE `publicacoes` (
   `idPublicacao` int(11) NOT NULL,
-  `idAutor` int(11) DEFAULT NULL,
-  `tipoAutor` enum('Empresa','Funcionario') DEFAULT NULL,
+  `idUsuarioAutor` int(11) DEFAULT NULL,
   `Conteudo` text DEFAULT NULL,
   `dataPublicacao` date DEFAULT NULL,
   `horaPublicacao` time DEFAULT NULL
@@ -240,50 +237,59 @@ CREATE TABLE `publicacoes` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `servico`
+-- Estrutura para tabela `servico`
 --
 
-DROP TABLE IF EXISTS `servico`;
 CREATE TABLE `servico` (
   `idServico` int(11) NOT NULL,
   `servico` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `servico`
+-- Despejando dados para a tabela `servico`
 --
 
 INSERT INTO `servico` (`idServico`, `servico`) VALUES
 (1, 'TI & Programação'),
-(2, 'Jurídico');
+(2, 'Jurídico'),
+(3, 'Design & Multimedia'),
+(4, 'Marketing & Vendas'),
+(5, 'Escrita & Conteúdos'),
+(6, 'Administração'),
+(7, 'Finanças'),
+(8, 'Engenharia e Manufatura');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `subcategoria`
+-- Estrutura para tabela `subcategoria`
 --
 
-DROP TABLE IF EXISTS `subcategoria`;
 CREATE TABLE `subcategoria` (
   `idSubcategoria` int(11) NOT NULL,
   `subcategoria` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `subcategoria`
+-- Despejando dados para a tabela `subcategoria`
 --
 
 INSERT INTO `subcategoria` (`idSubcategoria`, `subcategoria`) VALUES
 (1, 'Desenvolvedor Web - Frontend'),
-(2, 'Advogado');
+(2, 'Advogado'),
+(3, 'Designer Gráfico'),
+(4, 'Gestor de Marketing'),
+(5, 'Redator'),
+(6, 'Gestor de RH'),
+(7, 'Contador'),
+(8, 'Engenheiro');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `trabalhador`
+-- Estrutura para tabela `trabalhador`
 --
 
-DROP TABLE IF EXISTS `trabalhador`;
 CREATE TABLE `trabalhador` (
   `idTrabalhador` int(11) NOT NULL,
   `primeiroNome` varchar(100) DEFAULT NULL,
@@ -306,7 +312,7 @@ CREATE TABLE `trabalhador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `trabalhador`
+-- Despejando dados para a tabela `trabalhador`
 --
 
 INSERT INTO `trabalhador` (`idTrabalhador`, `primeiroNome`, `ultimoNome`, `email`, `senha`, `salt`, `experiencia`, `biografia`, `servico`, `subcategoria`, `telefone`, `fotoPerfil`, `dataNasc`, `curriculo`, `escolaridade`, `videoApresentacao`, `portifolio`, `tipoUsuario`) VALUES
@@ -320,7 +326,6 @@ CREATE TRIGGER `after_insert_trabalhador` AFTER INSERT ON `trabalhador` FOR EACH
     VALUES (CONCAT(NEW.primeiroNome, ' ', NEW.ultimoNome), NEW.email, NEW.senha, NEW.salt, 0, NEW.idTrabalhador)
 $$
 DELIMITER ;
-
 DELIMITER $$
 CREATE TRIGGER `after_update_trabalhador` AFTER UPDATE ON `trabalhador` FOR EACH ROW UPDATE usuario
     SET nome = CONCAT(NEW.primeiroNome, ' ', NEW.ultimoNome),
@@ -336,10 +341,9 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
   `nome` varchar(150) NOT NULL,
@@ -352,7 +356,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Despejando dados para a tabela `usuario`
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`, `salt`, `tipoUsuario`, `idEmpresa`, `idTrabalhador`) VALUES
@@ -362,10 +366,9 @@ INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`, `salt`, `tipoUsuar
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vagas`
+-- Estrutura para tabela `vagas`
 --
 
-DROP TABLE IF EXISTS `vagas`;
 CREATE TABLE `vagas` (
   `idVaga` int(11) NOT NULL,
   `servicoVaga` int(11) DEFAULT NULL,
@@ -384,44 +387,46 @@ CREATE TABLE `vagas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `vagas`
+-- Despejando dados para a tabela `vagas`
 --
 
 INSERT INTO `vagas` (`idVaga`, `servicoVaga`, `tituloVaga`, `salarioVaga`, `tipoContrato`, `cargaHoraria`, `estadoEmpresa`, `cidadeEmpresa`, `bairroEmpresa`, `complemento`, `descricao`, `dataPublicacao`, `idEmpresa`, `statusVaga`) VALUES
-(1, 1, 'Estágio TI', '1500', 'CLT', '44 horas semanais', 1, 1, 'Parque Vitória', ' gjzxgv uyc ', 'dfdgfdegg tryg ergefge', '2024-08-07', 3, 'Ativa');
+(1, 1, 'Estágio TI', '1500', 'CLT', '44 horas semanais', 1, 1, 'Parque Vitória', ' gjzxgv uyc ', 'dfdgfdegg tryg ergefge', '2024-08-07', 3, 'Ativa'),
+(2, 2, 'Advogado', '5000', 'CLT', '44 horas semanais', 1, 1, 'Parque Vitória', 'sdrftgyhuj', 'sdfghjklç tfyguhyijokpl', '2024-10-15', 3, 'Cancelada'),
+(3, 2, 'Estágio Jurídico', '1900', 'CLT', '44 horas semanais', 1, 1, 'Parque Vitória', 'fghjkl', 'gfhj hjklçyrt fg', '2024-10-15', 3, 'Cancelada');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `chat`
+-- Índices de tabela `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`idChat`);
 
 --
--- Índices para tabela `cidade`
+-- Índices de tabela `cidade`
 --
 ALTER TABLE `cidade`
   ADD PRIMARY KEY (`idCidade`);
 
 --
--- Índices para tabela `comentarios`
+-- Índices de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`idComentario`),
   ADD KEY `fkPublicacaoComen` (`idPublicacao`);
 
 --
--- Índices para tabela `curtidas`
+-- Índices de tabela `curtidas`
 --
 ALTER TABLE `curtidas`
   ADD PRIMARY KEY (`idCurtida`),
   ADD KEY `fkpublicacao` (`idPublicacao`);
 
 --
--- Índices para tabela `empresa`
+-- Índices de tabela `empresa`
 --
 ALTER TABLE `empresa`
   ADD PRIMARY KEY (`idempresa`),
@@ -429,13 +434,13 @@ ALTER TABLE `empresa`
   ADD UNIQUE KEY `emailEmpresa` (`email`);
 
 --
--- Índices para tabela `estado`
+-- Índices de tabela `estado`
 --
 ALTER TABLE `estado`
   ADD PRIMARY KEY (`idEstado`);
 
 --
--- Índices para tabela `historicoempresas`
+-- Índices de tabela `historicoempresas`
 --
 ALTER TABLE `historicoempresas`
   ADD PRIMARY KEY (`idContratacao`),
@@ -443,46 +448,47 @@ ALTER TABLE `historicoempresas`
   ADD KEY `fktrabalhador` (`idTrabalhador`) USING BTREE;
 
 --
--- Índices para tabela `historicofuncionario`
+-- Índices de tabela `historicofuncionario`
 --
 ALTER TABLE `historicofuncionario`
   ADD PRIMARY KEY (`idContratacaoFuncio`),
-  ADD KEY `fkEmpresaFuncio` (`idempresa`);
+  ADD KEY `fkEmpresaFuncio` (`idempresa`),
+  ADD KEY `fkIdFuncionario` (`idFuncionario`);
 
 --
--- Índices para tabela `mensagem`
+-- Índices de tabela `mensagem`
 --
 ALTER TABLE `mensagem`
   ADD PRIMARY KEY (`idMensagem`),
   ADD KEY `fkChatMensagem` (`idChat`);
 
 --
--- Índices para tabela `participante`
+-- Índices de tabela `participante`
 --
 ALTER TABLE `participante`
   ADD PRIMARY KEY (`idParticipante`),
   ADD KEY `fkChat` (`idChat`);
 
 --
--- Índices para tabela `publicacoes`
+-- Índices de tabela `publicacoes`
 --
 ALTER TABLE `publicacoes`
   ADD PRIMARY KEY (`idPublicacao`);
 
 --
--- Índices para tabela `servico`
+-- Índices de tabela `servico`
 --
 ALTER TABLE `servico`
   ADD PRIMARY KEY (`idServico`);
 
 --
--- Índices para tabela `subcategoria`
+-- Índices de tabela `subcategoria`
 --
 ALTER TABLE `subcategoria`
   ADD PRIMARY KEY (`idSubcategoria`);
 
 --
--- Índices para tabela `trabalhador`
+-- Índices de tabela `trabalhador`
 --
 ALTER TABLE `trabalhador`
   ADD PRIMARY KEY (`idTrabalhador`),
@@ -491,13 +497,13 @@ ALTER TABLE `trabalhador`
   ADD KEY `trabalhador_ibfk_2` (`subcategoria`);
 
 --
--- Índices para tabela `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- Índices para tabela `vagas`
+-- Índices de tabela `vagas`
 --
 ALTER TABLE `vagas`
   ADD PRIMARY KEY (`idVaga`),
@@ -507,7 +513,7 @@ ALTER TABLE `vagas`
   ADD KEY `idEmpresa` (`idEmpresa`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -550,13 +556,13 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de tabela `historicoempresas`
 --
 ALTER TABLE `historicoempresas`
-  MODIFY `idContratacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idContratacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `historicofuncionario`
 --
 ALTER TABLE `historicofuncionario`
-  MODIFY `idContratacaoFuncio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idContratacaoFuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `mensagem`
@@ -580,13 +586,13 @@ ALTER TABLE `publicacoes`
 -- AUTO_INCREMENT de tabela `servico`
 --
 ALTER TABLE `servico`
-  MODIFY `idServico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idServico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `subcategoria`
 --
 ALTER TABLE `subcategoria`
-  MODIFY `idSubcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idSubcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `trabalhador`
@@ -604,58 +610,59 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `vagas`
 --
 ALTER TABLE `vagas`
-  MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idVaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `comentarios`
+-- Restrições para tabelas `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `fkPublicacaoComen` FOREIGN KEY (`idPublicacao`) REFERENCES `publicacoes` (`idPublicacao`);
 
 --
--- Limitadores para a tabela `curtidas`
+-- Restrições para tabelas `curtidas`
 --
 ALTER TABLE `curtidas`
   ADD CONSTRAINT `fkpublicacao` FOREIGN KEY (`idPublicacao`) REFERENCES `publicacoes` (`idPublicacao`);
 
 --
--- Limitadores para a tabela `historicoempresas`
+-- Restrições para tabelas `historicoempresas`
 --
 ALTER TABLE `historicoempresas`
   ADD CONSTRAINT `fkempresa` FOREIGN KEY (`idempresa`) REFERENCES `empresa` (`idempresa`),
   ADD CONSTRAINT `fktrabalhador` FOREIGN KEY (`idTrabalhador`) REFERENCES `trabalhador` (`idTrabalhador`);
 
 --
--- Limitadores para a tabela `historicofuncionario`
+-- Restrições para tabelas `historicofuncionario`
 --
 ALTER TABLE `historicofuncionario`
-  ADD CONSTRAINT `fkEmpresaFuncio` FOREIGN KEY (`idempresa`) REFERENCES `empresa` (`idempresa`);
+  ADD CONSTRAINT `fkEmpresaFuncio` FOREIGN KEY (`idempresa`) REFERENCES `empresa` (`idempresa`),
+  ADD CONSTRAINT `fkIdFuncionario` FOREIGN KEY (`idFuncionario`) REFERENCES `trabalhador` (`idTrabalhador`);
 
 --
--- Limitadores para a tabela `mensagem`
+-- Restrições para tabelas `mensagem`
 --
 ALTER TABLE `mensagem`
   ADD CONSTRAINT `fkChatMensagem` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`);
 
 --
--- Limitadores para a tabela `participante`
+-- Restrições para tabelas `participante`
 --
 ALTER TABLE `participante`
   ADD CONSTRAINT `fkChat` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`);
 
 --
--- Limitadores para a tabela `trabalhador`
+-- Restrições para tabelas `trabalhador`
 --
 ALTER TABLE `trabalhador`
   ADD CONSTRAINT `trabalhador_ibfk_1` FOREIGN KEY (`servico`) REFERENCES `servico` (`idServico`),
   ADD CONSTRAINT `trabalhador_ibfk_2` FOREIGN KEY (`subcategoria`) REFERENCES `subcategoria` (`idSubcategoria`);
 
 --
--- Limitadores para a tabela `vagas`
+-- Restrições para tabelas `vagas`
 --
 ALTER TABLE `vagas`
   ADD CONSTRAINT `vagas_ibfk_1` FOREIGN KEY (`servicoVaga`) REFERENCES `servico` (`idServico`),

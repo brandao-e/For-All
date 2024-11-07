@@ -79,7 +79,7 @@
 
     <p>Uma foto profissional ajuda a construir confiança com as empresas.</p>
 
-    <form action="" method="post">
+    <form action="../controller/fotoController.php" method="post" enctype="multipart/form-data">
       <div class="container">
         <div class="left">
           <div class="img-container">
@@ -87,17 +87,17 @@
           </div>
           <div class="foto-group">
             <label for="selecao-arquivo" class="outline--link">CARREGAR FOTO</label>
-            <input id="selecao-arquivo" type="file">
+            <input id="selecao-arquivo" type="file" name="upload">
           </div>
         </div>
         <div class="right">
           <div class="input-group">
             <label for="data-nasc">Data de nascimento</label>
-            <input class="input" type="date" name="data-nasc" id="data-nasc">
+            <input class="input" type="date" name="dataNas" id="data-nasc">
           </div>
           <div class="input-group">
             <label for="phone-num">Número de celular</label>
-            <input class="input" type="text" name="phone-num" id="phone-num" placeholder="(XX) X XXXX-XXXX">
+            <input class="input" type="text" name="telefone" id="phone-num" placeholder="(XX) X XXXX-XXXX">
           </div>
         </div>
       </div>

@@ -1,9 +1,33 @@
+<?php 
+session_start();
+
+// Verifica se o cliente está logado
+if (!isset($_SESSION['idTra'])) {
+    header('Location: ../view/login.php');
+    exit;
+}
+    $id = $_SESSION['idTra'];
+    require 'conexao.php';
+    $sql = "SELECT * FROM trabalhador WHERE idTrabalhador = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $trabalhador = $stmt->fetch(PDO::FETCH_ASSOC);  
+    //------------ RECEBE historico----------------//
+    $sql = "SELECT * FROM historicofuncionario WHERE idFuncionario = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $historico = $stmt->fetch(PDO::FETCH_ASSOC);  
+ 
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For All | Perfil Empresa</title>
+    <title>For All | Perfil trabalhador</title>
 
     <!--===== AWESOME ICONS =====-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -11,8 +35,8 @@
     <!--===== MAIN CSS =====-->
     <link rel="stylesheet" href="../assets/css/main.css">
 
-    <!--===== TELA DE PERFIL DA EMPRESA CSS =====-->
-    <link rel="stylesheet" href="../assets/css/perfil_empresa.css">
+    <!--===== TELA DE PERFIL DO TRABALHADOR CSS =====-->
+    <link rel="stylesheet" href="../assets/css/perfil_trabalhador.css">
 
     <!--===== SCRIPT JS =====-->
     <script src="../assets/js/script.js"></script>
@@ -55,12 +79,14 @@
 
     <main class="container">
         <div class="left">
-            <div class="empresa-info">
-                <img src="../assets/img/imagemGenerica.png" alt="Logo da Empresa" class="empresa-foto">
-                <div class="empresa-detalhes">
-                    <h2>Ana.S</h2>
-                    <p>anaempresa@gmail.com</p>
-                    <p>Defina o CNPJ</p>
+            <div class="trabalhador-info">
+                <img src="../assets/img/imagemGenerica.png" alt="Logo do trabalhador" class="trabalhador-foto">
+                <div class="trabalhador-detalhes">
+                 
+                    <h2><?php echo $trabalhador['primeiroNome'],$trabalhador['ultimoNome'];?></h2>
+                    <p><?php echo $trabalhador['email'];?></p>
+                    <p><?php echo $trabalhador['telefone'];?></p>
+             
                 </div>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -69,48 +95,47 @@
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star-half-alt"></i>
                 </div>
-                <button class="encontrar-trabalhadores">Encontre Trabalhadores</button>
+                <form action="perfil_trabalhador.php" method="post">
+                <a href="busca_vaga.php?idTrabalhador=<?= $trabalhador['idTrabalhador']; ?>">Buscar Vaga</a>
+                </form>
+            </div>
+
+            <div class="curriculo">
+                <div class="top">
+                    <h3>curriculo</h3>
+                    <h3><?php  echo $trabalhador['curriculo'];?></h3>
+
+                    <i class="fa-regular fa-trash"></i>
+                </div>
             </div>
 
             <div class="apresentacoes">
                 <h3>Apresentações</h3>
                 <br/>
-                <textarea placeholder="Adicione um vídeo introdutório para os trabalhadores que têm interesse em você"></textarea>
-            </div>
+                <form method="post" action="envia_Apresentacao.php"  enctype="multipart/form-data">
+                <div class="background">
+                    <label for="apresentacaoId">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <span>Adicione um vídeo introdutório para as empresas que têm interesse em você</span>
+                    </label>
+                    <input id="apresentacaoId" type="file" accept="video/*" name="apresentacao">
+                    <input type="submit" name="enviar">
+                </div>
+                </form>
+            </div>            
 
             <div class="historico">
                 <h3>Histórico de Contratações</h3>
-                <h4>Vazio...</h4    >
+                <?php if (!empty($historico)): ?>
+                <h4><?php echo$historico['idempresa'],$historico['dataContratacao'];?></h4 >
+                <?php else: ?>
+                    <p> vazio.</p>
+                <?php endif; ?>
             </div>
         </div>
 
         <div class="right">
-            <div class="vaga">
-                <h3>Estagiário de TI <i class="fa-solid fa-ellipsis-h"></i></h3>
-                <p>Publicado: há 1 dia</p>
-                <div class="vaga-footer">
-                    <p class="salary">Salário: R$ 875</p>
-                    <button class="analisar-trabalhadores">Analisando Trabalhadores</button>
-                </div>
-            </div>
-
-            <div class="vaga">
-                <h3>Analista de Marketing <i class="fa-solid fa-ellipsis-h"></i></h3>
-                <p>Publicado: há 16 dias</p>
-                <div class="vaga-footer">
-                    <p class="salary">Salário: R$ 2000</p>
-                    <button class="analisar-trabalhadores">Analisando Trabalhadores</button>
-                </div>
-            </div>
-
-            <div class="vaga">
-                <h3>Assistente Administrativo<i class="fa-solid fa-ellipsis-h"></i></h3>
-                <p>Publicado: há 10 dias</p>
-                <div class="vaga-footer">
-                    <p class="salary">Salário: R$ 1600</p>
-                    <button class="analisar-trabalhadores">Cancelado</button>
-                </div>
-            </div>
+            
         </div>
     </main>
 

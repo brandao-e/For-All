@@ -1,12 +1,50 @@
 <?php 
-    session_start();
-    include_once "../controller/UsuarioController.php";
-    $displayError = isset($displayError) ? $displayError : "none";
-    if(isset($_GET['erro'])) {
-      $displayError = $_GET['erro'];
-    } else {
-      $displayError = "none";
+session_start();
+include '../controller/conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    // Verifica se o usuário existe
+    $sql = "SELECT * FROM trabalhador WHERE email = :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $loginTra = $stmt->fetch(PDO::FETCH_ASSOC);
+    //------------------------------------------------//
+    $sql = "SELECT * FROM empresa WHERE email = :email";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $loginEmpr = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if(!empty($loginTra)){
+        if ($loginTra['email'] == $email && $loginTra['senha'] == $senha) {
+             // Login bem-sucedido
+            $_SESSION['idTra'] = $loginTra['idTrabalhador'];
+            $_SESSION['pNome'] = $loginTra['primeiroNome'];
+            //header('Location: ../controller/cad5_Final.php');
+            header('Location: ../controller/perfil_trabalhador.php'); // Redireciona para a o trabalhador
+        } else {
+             echo "Usuário ou senha inválidos.";
+        }
     }
+    else if(!empty($loginEmpr)){
+            
+            if ($loginEmpr['email'] == $email && $loginEmpr['senha'] == $senha) {
+            // Login bem-sucedido
+            $_SESSION['idEmp'] = $loginEmpr['idempresa'];
+            $_SESSION['pNome'] = $loginEmpr['primeiroNome'];
+            header('Location: ../controller/perfil_empresa.php');
+          //  header('Location: ../perfil_empresa.php'); // Redireciona para a empresa
+        } else {
+            echo "Usuário ou senha inválidos.";
+        }
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -89,10 +127,10 @@
     <div class="content">
       <h2>Login</h2>
       <span class="user-not-found">Usuário não encontrado!</span>
-      <span class="wrong-email-password" style="display: <?php echo $displayError; ?>;">Email ou senha incorretos!</span>
-      <form action="?acao=login" method="post">
-        <input class="input" type="email" name="email--input" id="email--input-ID" placeholder="Email" required>
-        <input class="input" type="password" name="password--input" id="password--input-ID" placeholder="Senha" required>
+      <span class="wrong-email-password">Email ou senha incorretos!</span>
+      <form action="login.php" method="post">
+        <input class="input" type="email" name="email" id="email--input-ID" placeholder="Email" required>
+        <input class="input" type="password" name="senha" id="password--input-ID" placeholder="Senha" required>
 
         <a href="#" class="clear--link forget">Esqueceu sua senha?</a>
         <input class="solid--link" type="submit" value="LOGIN">

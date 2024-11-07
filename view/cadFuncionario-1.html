@@ -99,23 +99,23 @@
         </div>
       </div>
 
-      <form action="" method="post">
+      <form action="../controller/nomeController.php" method="post">
         <div class="row">
-          <input class="input" type="text" name="pNome--input" id="pNome--input-ID" placeholder="Primeiro Nome" required>
-          <input class="input" type="text" name="uNome--input" id="uNome--input-ID" placeholder="Último Nome" required>
+          <input class="input" type="text" name="pNome" id="pNome--input-ID" placeholder="Primeiro Nome" required>
+          <input class="input" type="text" name="uNome" id="uNome--input-ID" placeholder="Último Nome" required>
         </div>
 
         <div class="row">
           <div class="email">
-              <input class="input" type="email" name="email--input" id="email--input-ID" placeholder="Email Profissional" required>
+              <input class="input" type="email" name="email" id="email--input-ID" placeholder="Email Profissional" required>
               <!--Exibir via js caso o email já esteja no banco de dados-->
               <span class="email-error">O email já está em uso!</span>
           </div>
-          <input class="input" type="text" name="xp--input" id="xp--input-ID" placeholder="Experiência profissional" required>
+          <input class="input" type="text" name="xp" id="xp--input-ID" placeholder="Experiência profissional" required>
         </div>
 
         <div class="full-row">
-          <input class="input" type="password" name="password--input" id="password--input-ID" placeholder="Senha" required>
+          <input class="input" type="password" name="password" id="password--input-ID" placeholder="Senha" required>
           <!--Exbir com js caso a senha seja menor que 9 caracteres-->
           <span class="pass-error">A senha precisa de pelo menos 9 caracteres.</span>
         </div>

@@ -76,7 +76,7 @@ class HistoricoTrabalhador implements JsonSerializable {
                         s.servico,
                         sb.subcategoria
             FROM historicofuncionario hc
-            INNER JOIN trabalhador t ON t.idTrabalhador = hc.idTrabalhador
+            INNER JOIN trabalhador t ON t.idTrabalhador = hc.idFuncionario
             INNER JOIN servico s ON s.idServico = t.servico
             INNER JOIN subcategoria sb ON sb.idSubcategoria = t.subcategoria  -- Corrigido alias para 'sb'
             INNER JOIN usuario u ON u.idEmpresa = hc.idEmpresa
@@ -88,8 +88,8 @@ class HistoricoTrabalhador implements JsonSerializable {
         $dados = array();
 
         foreach($exec->fetchAll() as $valor) {
-            $historico = new HistoricoTrabalhadore();
-            $historico->idContratacao = $valor['idContratacao'];
+            $historico = new HistoricoTrabalhador();
+            $historico->idContratacao = $valor['idContratacaoFuncio'];
             $historico->idEmpresa = $valor['idEmpresa'];
             $historico->dataContratacao = $valor['dataContratacao'];
             $historico->primeiroNome = $valor['primeiroNome'];
@@ -112,7 +112,7 @@ class HistoricoTrabalhador implements JsonSerializable {
         $exec->execute($valores);
         $valor = $exec->fetch();
 
-        $historico = new HistoricoTrabalhadore();
+        $historico = new HistoricoTrabalhador();
         $historico->idContratacao = $valor['idContratacao'];
         $historico->dataContratacao = $valor['dataContratacao'];
         $historico->idTrabalhador = $valor['idTrabalhador'];

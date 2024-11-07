@@ -1,21 +1,55 @@
+<?php 
+session_start();
+  
+    $idVaga = $_GET['idVaga'];
+    
+   // $idVaga = 3;  
+    require 'conexao.php';
+    $sql = "SELECT tituloVaga, salarioVaga, tipoContrato, cargaHoraria, bairroEmpresa, complemento, descricao, dataPublicacao, idEmpresa 
+     FROM vagas 
+     WHERE idVaga = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $idVaga);
+    $stmt->execute();
+    $vaga = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $idempresa = $vaga['idEmpresa'];
+
+    $sql = "SELECT idTraba, idVagaIntrr FROM interessevags WHERE idEmpresa = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $idempresa);
+    $stmt->execute();
+    $interrese = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+    $idTraba =  $interrese['idTraba'];
+    $idVaga = $interrese['idVagaIntrr'];
+
+    $sql = "SELECT primeiroNome, ultimoNome, email FROM trabalhador WHERE idTrabalhador = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $idTraba);
+    $stmt->execute();
+    $interreseTrabalhador = $stmt->fetch(PDO::FETCH_ASSOC);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For All | Edição de Vaga</title>
+    <title>For All | Vaga</title>
 
-    <!--===== AWESOME ICONS =====-->
+    <!-- Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!--===== MAIN CSS =====-->
+    <!-- CSS Principal -->
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/vaga_empresa.css">
 
-    <!--===== VAGA EDIÇÃO CSS =====-->
-    <link rel="stylesheet" href="../assets/css/vaga_edicao.css">
-
-    <!--===== SCRIPT JS =====-->
+    <!-- Scripts JS -->
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/vaga_empresa.js"></script>
 
     <style>
         html, body {
@@ -27,9 +61,12 @@
             gap: 24px;
         }
     </style>
-
 </head>
 <body>
+<?php
+    
+    ?>
+    
     <header>
         <div class="header--container">
             <div class="logo--nav">
@@ -53,36 +90,39 @@
     </header>
 
     <main class="container">
+        <?php
+        ?>
 
         <div class="title-container">
-            <h2 class="job-title">Analista de Marketing</h2>
-            <p class="date">Publicado em 30 de Maio de 2024 em Marketing & Vendas</p>
+            <h2 class="job-title"><?php echo $vaga['tituloVaga']; ?></h2>
+            <p class="date">Publicado em <?php echo $vaga['dataPublicacao']; ?> 
+            <br>interessados: <?php   
+            echo $interreseTrabalhador['primeiroNome'],$interreseTrabalhador['ultimoNome'], $vaga['tituloVaga'];?>
+            <br>
+            <?php echo $interreseTrabalhador['email']?>
+            </p>
+
         </div>
-    
+
         <div class="job-columns">
             <div class="job-details">
                 <div class="job-header">
                     <h2>Sobre a Vaga</h2>
-                    <p class="salary">R$2000</p>
+                    <p class="salary">R$<?php echo $vaga['salarioVaga']; ?></p>
                 </div>
-                <p class="job-info"><strong>Tipo de contrato:</strong> Contrato CLT</p>
-                <p class="job-info"><strong>Carga horária semanal:</strong> 244 horas semanais</p>
-                <p class="job-info"><strong>Endereço da empresa:</strong> Av. Ipiranga, 200 - República, São Paulo - SP, 01046-010</p>
-                <p class="job-info"><strong>Descrição da vaga:</strong> Como Analista de Marketing em nossa equipe, você desempenhará um papel crucial 
-                    na elaboração e execução de estratégias de marketing que impulsionem o crescimento e a visibilidade da nossa empresa. Você será responsável 
-                    por analisar o mercado e as tendências do setor, identificar oportunidades de mercado e desenvolver planos de ação para alcançar os objetivos 
-                    de marketing estabelecidos. Além disso, você colaborará com equipes internas para garantir a integração e a execução eficaz das campanhas de marketing, 
-                    desde a concepção até a implementação. Procuramos por alguém com habilidades analíticas afiadas, criatividade e capacidade de pensar estrategicamente, 
-                    além de excelentes habilidades de comunicação e trabalho em equipe. Se você é apaixonado por marketing e está pronto para assumir um papel dinâmico em 
-                    uma equipe inovadora, esta pode ser a oportunidade perfeita para você.</p>
+                <p class="job-info"><strong>Tipo de contrato:</strong> <?php echo $vaga['tipoContrato']; ?></p>
+                <p class="job-info"><strong>Carga horária semanal:</strong> <?php echo $vaga['cargaHoraria']; ?></p>
+                <p class="job-info"><strong>Endereço da empresa:</strong> <?php echo$vaga['bairroEmpresa'] . ", " . $vaga['complemento']; ?></p>
+                <p class="job-info"><strong>Descrição da vaga:</strong> <?php echo $vaga['descricao']; ?></p>
             </div>
-    
+
             <div class="right-column">
-                <button class="edita-button">Editar Vaga</button>
-                <button class="cancela-button">Cancelar Vaga</button>
-                
+                <button class="edita-button" onclick="editarVaga(<?php echo $vaga['idVaga']; ?>)">Editar Vaga</button>
+                <button class="cancela-button" onclick="cancelarVaga(<?php echo $vaga['idVaga']; ?>)">Cancelar Vaga</button>
+                <button class="ativa-button" onclick="ativarVaga(<?php echo $vaga['idVaga']; ?>)">Ativar Vaga</button>
+
                 <hr class="divider">
-    
+
                 <div class="user-info">
                     <img src="icone-rosto.png" alt="Ícone de rosto" class="user-icon">
                     <div class="user-details">
@@ -100,11 +140,6 @@
                     <p class="job-info">6 Vagas Publicadas</p>
                     <p class="job-info">5 Trabalhadores Contratados</p>
                 </div>
-    
-                <hr class="divider">
-    
-                <h3 class="activity-title">Atividade da Vaga</h3>
-                <p>8 Trabalhadores Interessados</p>
             </div>
         </div>
     </main>
